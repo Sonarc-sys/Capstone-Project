@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://rxj0cwiy44hy"]
 
 [ext_resource type="Texture2D" uid="uid://bpqaqadyj7u6a" path="res://Main Menu Background.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://6521g8gw7p1g" path="res://main_menu.gd" id="1_7vrkn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vrkn"]
 texture = ExtResource("1_06t4h")
@@ -21,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7vrkn")
 
 [node name="Panel" type="Panel" parent="." unique_id=660320518]
 layout_mode = 1
@@ -36,12 +38,15 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7vrkn")
 
 [node name="Label" type="Label" parent="Panel" unique_id=126307248]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -153.00002
-offset_right = 153.00002
-offset_bottom = 82.0
+anchors_preset = -1
+anchor_left = 0.462
+anchor_top = 0.106000006
+anchor_right = 0.462
+anchor_bottom = 0.106000006
+offset_left = -153.50397
+offset_top = -41.048004
+offset_right = 152.49603
+offset_bottom = 40.951996
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 59
 text = "Game Title"
@@ -50,20 +55,20 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=404164527]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.573
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.573
 offset_left = -148.5
-offset_top = -180.0
+offset_top = -180.30402
 offset_right = 148.5
-offset_bottom = 180.0
+offset_bottom = 179.69598
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=420179561]
+[node name="NewHire_Button" type="Button" parent="VBoxContainer" unique_id=420179561]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.0093103545, 0.0093103545, 0.0093103545, 1)
@@ -71,7 +76,7 @@ theme_override_font_sizes/font_size = 37
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 text = "New Hire"
 
-[node name="Button3" type="Button" parent="VBoxContainer" unique_id=1674733735]
+[node name="Continue_Button" type="Button" parent="VBoxContainer" unique_id=1674733735]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.0093103545, 0.0093103545, 0.0093103545, 1)
@@ -79,7 +84,7 @@ theme_override_font_sizes/font_size = 37
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 text = "Continue Shift"
 
-[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1779485485]
+[node name="Options_Button" type="Button" parent="VBoxContainer" unique_id=1779485485]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.0093103545, 0.0093103545, 0.0093103545, 1)
@@ -88,7 +93,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 text = "Options
 "
 
-[node name="Button4" type="Button" parent="VBoxContainer" unique_id=2043486025]
+[node name="Retire_Button" type="Button" parent="VBoxContainer" unique_id=2043486025]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.0093103545, 0.0093103545, 0.0093103545, 1)
@@ -96,3 +101,8 @@ theme_override_font_sizes/font_size = 37
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 text = "Retire
 "
+
+[connection signal="pressed" from="VBoxContainer/NewHire_Button" to="." method="_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Continue_Button" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options_Button" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Retire_Button" to="." method="_on_exit_pressed"]
