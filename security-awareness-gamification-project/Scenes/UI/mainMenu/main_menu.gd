@@ -11,21 +11,21 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-# Main Menu button menus
+# New Game Button
 func _new_game_pressed() -> void:
 	print("Start Pressed")
 	# get_tree().change_scene_to_file() #link to load a cutscene for new game
 
-
+# Continue Game Button
 func _on_continue_pressed() -> void:
 	print("Continue Pressed") 
 	#link to load saved file and new scene
 
-
+# Options Button 
 func _on_options_pressed() -> void:
 	print("options Pressed") #implement options scene
 
-
+# Exit Button
 func _on_exit_pressed() -> void:
 	print("Exit Pressed")
 	get_tree().quit() #terminate game
