@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 # New Game Button
 func _new_game_pressed() -> void:
 	print("Start Pressed")
-	# get_tree().change_scene_to_file() #link to load a cutscene for new game
+	get_tree().change_scene_to_file("res://Scenes/UI/desktop/desktopUI.tscn") #link to load a cutscene for new game
 
 # Continue Game Button
 func _on_continue_pressed() -> void:
