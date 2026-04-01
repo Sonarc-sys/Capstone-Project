@@ -1,11 +1,12 @@
 extends Node
+class_name LunchBreakScenarioGenerator
 
+@export var all_Scenarios: Array[LunchBreakScenario] = []
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+#Returns a random lunch break scenario [cite: 83, 103]
+func get_rand_lunchbreak() -> LunchBreakScenario:
+	if all_Scenarios.size() > 0:
+		all_Scenarios.shuffle()
+		return all_Scenarios[0]
+	return null
+	
