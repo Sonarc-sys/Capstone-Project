@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bpqaqadyj7u6a" path="res://Main Menu Background.png" id="1_06t4h"]
 [ext_resource type="Script" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://6521g8gw7p1g" path="res://main_menu.gd" id="1_7vrkn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vrkn"]
 texture = ExtResource("1_06t4h")
