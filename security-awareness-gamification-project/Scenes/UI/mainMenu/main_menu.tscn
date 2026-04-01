@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://rxj0cwiy44hy"]
 
-[ext_resource type="Texture2D" uid="uid://bpqaqadyj7u6a" path="res://Main Menu Background.png" id="1_06t4h"]
-[ext_resource type="Script" path="res://main_menu.gd" id="1_7vrkn"]
-[ext_resource type="Script" uid="uid://6521g8gw7p1g" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://drp5bhmbul0c3" path="res://Scenes/UI/mainMenu/main_menu.gd" id="1_sj6g6"]
+[ext_resource type="Texture2D" uid="uid://bpqaqadyj7u6a" path="res://Scenes/UI/mainMenu/Main Menu Background.png" id="2_27gmf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vrkn"]
-texture = ExtResource("1_06t4h")
+texture = ExtResource("2_27gmf")
 modulate_color = Color(0.20871013, 0.20871016, 0.20871013, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
@@ -23,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7vrkn")
+script = ExtResource("1_sj6g6")
 
 [node name="Panel" type="Panel" parent="." unique_id=660320518]
 layout_mode = 1
