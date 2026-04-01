@@ -4,9 +4,48 @@
 
 [node name="Lunchbreak" type="Control" unique_id=1255750877]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 1.5200001
+anchor_bottom = 1.654
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 28.959839
+offset_bottom = 24.208008
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s1mp1")
+
+[node name="Background" type="Panel" parent="." unique_id=746612918]
+layout_mode = 0
+offset_right = 1140.0
+offset_bottom = 638.0
+
+[node name="Label" type="Label" parent="." unique_id=906336044]
+layout_mode = 0
+offset_right = 1030.0
+offset_bottom = 338.0
+rotation = 0.0055920533
+pivot_offset = Vector2(236, 90)
+text = "You are leaving for lunch in the company cafe. Your work computer is on. Should you log out, considering that you are still in the company?"
+
+[node name="Button" type="Button" parent="." unique_id=184883362]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.037
+anchor_bottom = 0.058000002
+offset_left = 124.0
+offset_top = 343.0
+offset_right = 117.732
+offset_bottom = 321.36
+text = "Yes
+"
+
+[node name="Button2" type="Button" parent="." unique_id=2074673601]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 344.0
+offset_right = 612.0
+offset_bottom = 375.0
+text = "No"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_option_pressed"]

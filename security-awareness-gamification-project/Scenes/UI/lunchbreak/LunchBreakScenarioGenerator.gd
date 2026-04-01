@@ -9,4 +9,3 @@ func get_rand_lunchbreak() -> LunchBreakScenario:
 		all_Scenarios.shuffle()
 		return all_Scenarios[0]
 	return null
-	

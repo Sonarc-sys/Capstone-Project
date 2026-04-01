@@ -18,7 +18,8 @@ func _new_game_pressed() -> void:
 
 # Continue Game Button
 func _on_continue_pressed() -> void:
-	print("Continue Pressed") 
+	print("Continue Pressed")
+	get_tree().change_scene_to_file("res://Scenes/UI/lunchbreak/lunchbreak.tscn") 
 	#link to load saved file and new scene
 
 # Options Button 
