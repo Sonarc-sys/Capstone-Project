@@ -10,7 +10,11 @@ extends Control
 
 var current_scen: LunchBreakScenario
 func _ready() -> void:
-	consequence_panel.hide() #Here, ensure that the consequence feedback is hidden until the completion of the lunch scenario.
+	if consequence_panel == null:
+		print("Sorry, there is a Critical Error, cannot find the Consequence Panel. Try again and check your computer.")
+		return
+	consequence_panel.hide()
+		 #Here, ensure that the consequence feedback is hidden until the completion of the lunch scenario.
 	if scenario_generator:
 		#Here, use the custom function to get a scenario from the list of possible scenarios.
 		var random_scen = scenario_generator.get_rand_lunchbreak()
