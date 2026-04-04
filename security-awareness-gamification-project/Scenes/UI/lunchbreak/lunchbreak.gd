@@ -1,41 +1,54 @@
 extends Control
 
-
-@onready var question_label: Label = $Background/Label 
-@onready var option1_butt: Button = $Background/Button 
-@onready var option2_butt: Button = $Background/Button2 
+# UI References
+@onready var question_label: Label = $Label 
+@onready var option1_butt: Button = $Button 
+@onready var option2_butt: Button = $Button2 
+@onready var scenario_display: TextureRect = $Background/TextureRect # Ensure TextureRect is inside Background!
 @onready var consequence_panel: Panel = $ConsequencePanel
+# Data Link
+@export var scenario_generator = load("res://Scenes/UI/lunchbre/ScenarioList.tres")
 
-@export var scenario_generator: LunchBreakScenarioGenerator
 
-var current_scen: LunchBreakScenario
-func _ready() -> void:
-	if consequence_panel == null:
-		print("Sorry, there is a Critical Error, cannot find the Consequence Panel. Try again and check your computer.")
-		return
-	consequence_panel.hide()
-		 #Here, ensure that the consequence feedback is hidden until the completion of the lunch scenario.
-	if scenario_generator:
-		#Here, use the custom function to get a scenario from the list of possible scenarios.
-		var random_scen = scenario_generator.get_rand_lunchbreak()
-		if random_scen:
-			display_scenario(random_scen)
-	else:
-		#Here, we have error handling, if I forgot to link the generator, this will prevent the game from randomly crashing with a blank or white screen.
-		print("Sorry, but there is no Scenario Generator that is linked to the LunchBreakUI")
-
-#Here, we will now populate the UI. We will take the data from Resource, and put it on the screen. 
-func display_scenario(scenario: LunchBreakScenario):
+func display_scenario(scenario: Resource):
 	current_scen = scenario
 	question_label.text = scenario.scenario_text
-	option1_butt.text = scenario.thechoices[0]
-	option2_butt.text = scenario.thechoices[1]
+
+	if scenario.scenario_image:
+		scenario_display.texture = scenario.scenario_image
 	
+	if scenario.thechoices.size() >= 2:
+		option1_butt.text = scenario.thechoices[0]
+		option2_butt.text = scenario.thechoices[1]
+
+
+var current_scen: Resource
+
+func _ready() -> void:
+	# 1. Safety check for the UI
+	if consequence_panel == null:
+		print("Critical Error: Consequence Panel missing from Scene Tree!")
+		return
 	
-	#Here, we will check the player's choice against whether the correct answer or not.
+	consequence_panel.hide()
+	
+	# 2. Safety check for the Data
+	if scenario_generator:
+		# Check if the resource has our function
+		if scenario_generator.has_method("get_rand_lunchbreak"):
+			var picked_scen = scenario_generator.get_rand_lunchbreak()
+			if picked_scen:
+				display_scenario(picked_scen)
+			else:
+				print("Sorry, the Array inside ScenarioList.tres is empty. Add your Day .tres files!")
+		else:
+			print("Error: The file in Scenario Generator is not the right script type.")
+	else:
+		print("Error: The Scenario Generator slot in the Inspector is empty!")
+
 func _process_choice(index: int):
-	
-	if not current_scen: return
+	if not current_scen: 
+		return
 	
 	var is_right = (index == current_scen.correct_choiceindex)
 	
@@ -45,13 +58,19 @@ func _process_choice(index: int):
 	
 	show_consequence(is_right)
 
+# Show Feedback
 func show_consequence(right: bool):
 	consequence_panel.show()
-	var result_text = "This is right, nice job! " if right else "Sorry, this is not right."
-	$ConsequencePanel/ResultLabel.text = result_text + current_scen.consequence_Text
+	var result_text = "This is right, nice job! " if right else "Sorry, this is not right. "
+	
+	# Using get_node_or_null is safer in case the label is renamed
+	var res_label = consequence_panel.get_node_or_null("ResultLabel")
+	if res_label:
+		res_label.text = result_text + current_scen.consequence_Text
 
+# Signals from Inspector
 func _on_button_pressed() -> void:
-	_process_choice(0) # "Yes" / Option 1
+	_process_choice(0)
 
 func _on_button_2_pressed() -> void:
-	_process_choice(1) # "No" / Option 2
+	_process_choice(1)

@@ -22,23 +22,10 @@ script = ExtResource("1_s1mp1")
 scenario_generator = ExtResource("2_2lap2")
 
 [node name="Background" type="Panel" parent="." unique_id=746612918]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 1140.0
+offset_bottom = 638.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2lap2")
-
-[node name="TextureRect" type="TextureRect" parent="Background" unique_id=682709730]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-stretch_mode = 6
 
 [node name="Label" type="Label" parent="." unique_id=906336044]
 layout_mode = 0
@@ -47,6 +34,7 @@ offset_bottom = 338.0
 rotation = 0.0055920533
 pivot_offset = Vector2(236, 90)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "You are leaving for lunch in the company cafe. Your work computer is on. Should you log out, considering that you are still in the company?"
 
 [node name="Button" type="Button" parent="." unique_id=184883362]
 layout_mode = 1
@@ -69,18 +57,6 @@ offset_right = 612.0
 offset_bottom = 375.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "No"
-
-[node name="ConsequencePanel" type="Panel" parent="." unique_id=113705593]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ResultLabel" type="Label" parent="ConsequencePanel" unique_id=1878922963]
-layout_mode = 0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 40.0
-offset_bottom = 23.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_option_pressed"]

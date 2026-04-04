@@ -1,6 +1,6 @@
-extends Node
+extends Resource
 
-@export var all_Scenarios: Array[LunchBreakScenario] = []
+@export var all_Scenarios: Array[Resource] = []
 
 #Returns a random lunch break scenario [cite: 83, 103]
 func get_rand_lunchbreak() -> LunchBreakScenario:

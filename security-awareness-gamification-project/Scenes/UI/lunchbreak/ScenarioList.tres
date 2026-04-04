@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3 uid="uid://bjilf34uw03nm"]
+
+[ext_resource type="Resource" uid="uid://h47ln0nc6rqj" path="res://Scenes/UI/lunchbreak/Lunch2.tres" id="1_smmsx"]
+[ext_resource type="Resource" uid="uid://bbb4ju5ii15lg" path="res://Scenes/UI/lunchbreak/Lunch3.tres" id="2_kmqbi"]
+[ext_resource type="Resource" uid="uid://ccd1r3ya0cuvd" path="res://Scenes/UI/lunchbreak/Lunch4.tres" id="3_pasfp"]
+[ext_resource type="Resource" uid="uid://ifrh36esovmq" path="res://Scenes/UI/lunchbreak/Lunch5.tres" id="4_54nn5"]
+[ext_resource type="Script" uid="uid://lyb2002wwha2" path="res://LunchBreakScenarioGenerator.gd" id="5_4y12j"]
+
+[resource]
+script = ExtResource("5_4y12j")
+all_Scenarios = Array[Resource]([ExtResource("1_smmsx"), ExtResource("2_kmqbi"), ExtResource("3_pasfp"), ExtResource("4_54nn5"), ExtResource("4_54nn5")])
+metadata/_custom_type_script = "uid://bmtupw6t7k5gr"

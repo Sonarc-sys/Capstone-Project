@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LunchBreakScenario" format=3 uid="uid://cy63nyvs0camv"]
+
+[ext_resource type="Script" uid="uid://bmtupw6t7k5gr" path="res://Scenes/UI/lunchbreak/LunchBreakScenario.gd" id="1_cckto"]
+
+[resource]
+script = ExtResource("1_cckto")
+scenario_text = "You are leaving for lunch, should you leave your computer logged in and turned on?"
+thechoices = Array[String](["Log Out", "Stay Logged In"])
+metadata/_custom_type_script = "uid://bmtupw6t7k5gr"
