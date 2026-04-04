@@ -77,7 +77,6 @@ offset_left = 1.0
 offset_top = 76.0
 offset_right = 1149.0
 offset_bottom = 642.0
-metadata/_edit_lock_ = true
 
 [node name="EmailList Panel" type="PanelContainer" parent="Hbox for EmaiList_Email Body" unique_id=507288649]
 layout_mode = 2
