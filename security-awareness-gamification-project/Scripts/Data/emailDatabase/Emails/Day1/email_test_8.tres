@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Email" format=3]
+
+[ext_resource type="Script" path="res://Scripts/Data/emailDatabase/Logic/Attachment.gd" id="1_14lib"]
+[ext_resource type="Script" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="2_jtmt7"]
+
+[resource]
+script = ExtResource("2_jtmt7")
+subject = "Test Email #8"
+sender = "sender8@example.com"
+fullname = "Sender 8"
+full_email_address = "sender8@example.com"
+receiver = "player@example.com"
+relevant_info = "This is some relevant info for email #8"
+body_text = "Hello, this is the body of test email #8"
