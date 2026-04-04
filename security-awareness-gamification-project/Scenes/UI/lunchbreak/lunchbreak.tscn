@@ -25,6 +25,15 @@ offset_right = 1140.0
 offset_bottom = 638.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2lap2")
 
+[node name="Label" type="Label" parent="." unique_id=906336044]
+layout_mode = 0
+offset_right = 1030.0
+offset_bottom = 338.0
+rotation = 0.0055920533
+pivot_offset = Vector2(236, 90)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "You are leaving for lunch in the company cafe. Your work computer is on. Should you log out, considering that you are still in the company?"
+
 [node name="Button" type="Button" parent="." unique_id=184883362]
 layout_mode = 1
 anchors_preset = -1
