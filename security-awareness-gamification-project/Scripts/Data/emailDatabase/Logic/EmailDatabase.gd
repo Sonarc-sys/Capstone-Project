@@ -2,12 +2,12 @@ extends Node
 class_name EmailDatabase
 
 # This array will hold all of the EmailData resources created in the Editor [cite: 11]
-@export var all_emailpool: Array[EmailData] = []
+@export var all_emailpool: Array[Email] = []
 
 # Creates a list of 10 emails based on the day's difficulty [cite: 8, 52]
-func create_email_list(day: int) -> Array[EmailData]:
-	var daily_list: Array[EmailData] = []
-	var email_poolfortheday: Array[EmailData] = []
+func create_email_list(day: int) -> Array[Email]:
+	var daily_list: Array[Email] = []
+	var email_poolfortheday: Array[Email] = []
 	
 	# Filter the pool based on the difficulty level [cite: 8, 52]
 	for email in all_emailpool: 
@@ -24,11 +24,11 @@ func create_email_list(day: int) -> Array[EmailData]:
 	return daily_list
 
 # Returns a specific email from the database [cite: 60]
-func get_email(index: int, current_list: Array[EmailData]) -> EmailData:
+func get_email(index: int, current_list: Array[Email]) -> Email:
 	if index >= 0 and index < current_list.size():
 		return current_list[index]
 	return null
 
 # Allows for adding a new email to the database pool [cite: 61]
-func _put_email(new_email: EmailData):
+func _put_email(new_email: Email):
 	all_emailpool.append(new_email)
