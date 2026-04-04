@@ -30,4 +30,4 @@ func populate_email_list(email_array: Array[Email]):
 
 func _on_email_button_pressed(index):
 	selected_email = emails[index]
-	get_node("/root/EmailUI/EmailViewer").display_email(selected_email)
+	$"../Vbox Right side Email/Email Content Panel".display_email(selected_email)

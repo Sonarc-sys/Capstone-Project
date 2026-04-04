@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b446kb0qhe2rv" path="res://Scenes/UI/emailInbox/email_inbox.gd" id="1_cnlwl"]
 [ext_resource type="Script" uid="uid://ci81am2llph7" path="res://Scenes/UI/emailInbox/email_list_panel.gd" id="2_5unkl"]
+[ext_resource type="Script" uid="uid://cdluirdjbwdf" path="res://Scenes/UI/emailInbox/EmailDisplay.gd" id="3_46t6v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnlwl"]
 bg_color = Color(0.166, 0.17733334, 0.2, 1)
@@ -107,20 +108,30 @@ text = "Forward"
 
 [node name="Email Content Panel" type="PanelContainer" parent="Hbox for EmaiList_Email Body/Vbox Right side Email" unique_id=852344078]
 layout_mode = 2
+script = ExtResource("3_46t6v")
 
-[node name="Vbox Body" type="VBoxContainer" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel" unique_id=669903694]
+[node name="Vbox Email Container" type="VBoxContainer" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel" unique_id=669903694]
 layout_mode = 2
 
-[node name="From Email Label" type="Label" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Body" unique_id=1859374082]
+[node name="From_sender_logo" type="HBoxContainer" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Email Container" unique_id=730460883]
 layout_mode = 2
 
-[node name="Subject Label" type="Label" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Body" unique_id=1436509098]
+[node name="Vbox SenderInfo" type="VBoxContainer" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Email Container/From_sender_logo" unique_id=1951512387]
 layout_mode = 2
 
-[node name="Vbox Attachments" type="VBoxContainer" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Body" unique_id=694280769]
+[node name="Sender Info" type="Label" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Email Container/From_sender_logo/Vbox SenderInfo" unique_id=400013740]
 layout_mode = 2
 
-[node name="Body Label" type="RichTextLabel" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Body" unique_id=76309100]
+[node name="Logo" type="TextureRect" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Email Container/From_sender_logo" unique_id=663433869]
+layout_mode = 2
+
+[node name="Subject Label" type="Label" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Email Container" unique_id=1436509098]
+layout_mode = 2
+
+[node name="Attachments" type="HBoxContainer" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Email Container" unique_id=233197583]
+layout_mode = 2
+
+[node name="Body" type="Label" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Email Container" unique_id=208142583]
 layout_mode = 2
 
 [connection signal="pressed" from="Desktop Shortcut" to="." method="_on_button_pressed"]
