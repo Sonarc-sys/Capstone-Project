@@ -1,5 +1,4 @@
 extends Node
-class_name LunchBreakScenarioGenerator
 
 @export var all_Scenarios: Array[LunchBreakScenario] = []
 
