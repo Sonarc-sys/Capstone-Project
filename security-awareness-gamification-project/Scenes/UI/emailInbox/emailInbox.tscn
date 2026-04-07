@@ -92,6 +92,7 @@ layout_mode = 2
 
 [node name="Vbox Right side Email" type="VBoxContainer" parent="Hbox for EmaiList_Email Body" unique_id=1618841581]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Forward_Trash Hbox" type="HBoxContainer" parent="Hbox for EmaiList_Email Body/Vbox Right side Email" unique_id=1281481824]
 layout_mode = 2
