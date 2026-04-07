@@ -3,7 +3,7 @@ extends PanelContainer
 @onready var email_buttons_container = $"ScrollContainer/Vbox Email List"
 var emails: Array[Email] = []
 var selected_email: Email
-signal current_email(index)
+signal current_email(email: Email, Index: int)
 
 func populate_email_list(email_array: Array[Email]):
 	emails = email_array
@@ -30,7 +30,7 @@ func populate_email_list(email_array: Array[Email]):
 		email_buttons_container.add_child(btn)
 
 func _on_email_button_pressed(index):
-	current_email.emit(index) #sends out signal for selected email index
-	
 	selected_email = emails[index] 
 	$"../Vbox Right side Email/Email Content Panel".display_email(selected_email) #dispalsy email on right side on button press by calling this method
+	
+	current_email.emit(selected_email, index) #sends out signal for selected email index
