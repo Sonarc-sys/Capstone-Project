@@ -1,11 +1,16 @@
 extends Node
 
-var score_Manager = ScoreManager.new()
+var receipt_data: Array = []
 
-class ScoreManager:
-	var player_score: int = 0
+func add_receipt_entry(amount: int, description: String, is_mistake: bool):
+	receipt_data.append({
+		"cash": amount,
+		"text": description,
+		"mistake": is_mistake
+	})
+	print("Added to receipt: ", description, " | ", amount)
+
+func reset_day():
+	receipt_data.clear()
 	
-	func add_penalty(amount: int):
-		player_score -= amount
-		print("Penalty has been added. Your Current Score is: ", player_score)
-		
+	

@@ -8,7 +8,7 @@ extends Control
 @onready var consequence_panel: Panel = $ConsequencePanel
 # Data Link
 @export var scenario_generator = load("res://Scenes/UI/lunchbre/ScenarioList.tres")
-
+var rounds_count: int = 0
 
 func display_scenario(scenario: Resource):
 	current_scen = scenario
@@ -44,26 +44,42 @@ func _ready() -> void:
 		else:
 			print("The days_array is empty!")
 func _process_choice(index: int):
+	# SAFETY CHECK: If the panel is already up, ignore extra clicks
+	if consequence_panel.visible:
+		return
+		
 	if not current_scen: 
 		return
 	
 	var is_right = (index == current_scen.correct_choiceindex)
+
+	if is_right:
+		Global.add_receipt_entry(100, "Secure Decision", false)
+	else:
+		Global.add_receipt_entry(-500, current_scen.scenario_text, true)
+	rounds_count += 1
 	
-	if not is_right:
-		if has_node("/root/Global"):
-			get_node("/root/Global").score_Manager.add_penalty(50)
-	
+	# Transition to showing the result
 	show_consequence(is_right)
 
-# Show Feedback
 func show_consequence(right: bool):
 	consequence_panel.show()
 	var result_text = "This is right, nice job! " if right else "Sorry, this is not right. "
 	
-	# Using get_node_or_null is safer in case the label is renamed
 	var res_label = consequence_panel.get_node_or_null("ResultLabel")
 	if res_label:
 		res_label.text = result_text + current_scen.consequence_Text
+	
+	# Wait 2 seconds for the player to read
+	await get_tree().create_timer(2.0).timeout
+	
+	# DECIDE WHAT HAPPENS AFTER THE TIMER
+	if rounds_count >= 5:
+		# GO TO SCOREBOARD
+		get_tree().change_scene_to_file("res://Scenes/UI/Scoreboard.tscn")
+	else:
+		# GO TO NEXT SCENARIO
+		get_next_scenario()
 
 # Signals from Inspector
 func _on_button_pressed() -> void:
@@ -71,3 +87,15 @@ func _on_button_pressed() -> void:
 
 func _on_button_2_pressed() -> void:
 	_process_choice(1)
+
+
+func get_next_scenario():
+	# Hide the feedback panel so we can see the new question
+	consequence_panel.hide()
+	
+	if scenario_generator:
+		var list = scenario_generator.days_array 
+		if list.size() > 0:
+			var random_index = randi() % list.size()
+			var picked_scen = list[random_index]
+			display_scenario(picked_scen)
