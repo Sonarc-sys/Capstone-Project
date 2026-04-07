@@ -136,3 +136,5 @@ layout_mode = 2
 layout_mode = 2
 
 [connection signal="pressed" from="Desktop Shortcut" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Hbox for EmaiList_Email Body/Vbox Right side Email/Forward_Trash Hbox/Trash" to="." method="_on_trash_pressed"]
+[connection signal="pressed" from="Hbox for EmaiList_Email Body/Vbox Right side Email/Forward_Trash Hbox/Forward" to="." method="_on_forward_pressed"]

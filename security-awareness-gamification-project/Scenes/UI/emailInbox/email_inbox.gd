@@ -4,8 +4,9 @@ extends Control
 
 var all_emails: Array[Email] = [] #array storing all emails from source
 var selected_emails: Array[Email] = [] #10 selected emails stored here
+var focused_email = -1
 
-# Called when the node enters the scene tree for the first time.
+# Loads emails and places them in panel on scene load
 func _ready() -> void:
 	#Calls email generator to load emails
 	EmailGenerator.load_emails(EmailGenerator.email_resource_folder, EmailGenerator.email_number)
@@ -13,12 +14,26 @@ func _ready() -> void:
 	#populates left email panel
 	email_list_panel.populate_email_list(EmailGenerator.selected_emails)
 	
+	#Listening for signals
+	$"Hbox for EmaiList_Email Body/EmailList Panel".current_email.connect(on_email_selected)
+		
 	
 #Button to bring back to desktop
 func _on_button_pressed() -> void:
 	pass 
 	get_tree().change_scene_to_file("res://Scenes/UI/desktop/desktopUI.tscn")
-	
 
-func _process(delta: float) -> void:
-	pass
+#Used to update email index
+func on_email_selected(index):
+	focused_email = index
+	print("The current email index is: ", focused_email)
+	
+#Buttons for trash and forwarding emails and scoring.
+func _on_trash_pressed() -> void:
+	
+	pass 
+
+
+func _on_forward_pressed() -> void:
+	
+	pass 
