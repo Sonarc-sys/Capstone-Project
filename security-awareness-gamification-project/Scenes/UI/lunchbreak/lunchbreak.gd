@@ -25,27 +25,24 @@ func display_scenario(scenario: Resource):
 var current_scen: Resource
 
 func _ready() -> void:
-	# 1. Safety check for the UI
-	if consequence_panel == null:
-		print("Critical Error: Consequence Panel missing from Scene Tree!")
-		return
+	# 1. Shuffle the engine's internal math
+	randomize() 
 	
 	consequence_panel.hide()
 	
-	# 2. Safety check for the Data
 	if scenario_generator:
-		# Check if the resource has our function
-		if scenario_generator.has_method("get_rand_lunchbreak"):
-			var picked_scen = scenario_generator.get_rand_lunchbreak()
-			if picked_scen:
-				display_scenario(picked_scen)
-			else:
-				print("Sorry, the Array inside ScenarioList.tres is empty. Add your Day .tres files!")
+		# 2. Access the array directly from the resource
+		var list = scenario_generator.days_array 
+		
+		if list.size() > 0:
+			# 3. Generate a random index right here
+			var random_index = randi() % list.size()
+			var picked_scen = list[random_index]
+			
+			# 4. Show it
+			display_scenario(picked_scen)
 		else:
-			print("Error: The file in Scenario Generator is not the right script type.")
-	else:
-		print("Error: The Scenario Generator slot in the Inspector is empty!")
-
+			print("The days_array is empty!")
 func _process_choice(index: int):
 	if not current_scen: 
 		return

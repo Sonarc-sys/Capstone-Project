@@ -1,5 +1,6 @@
-[gd_resource type="Resource" format=3 uid="uid://bjilf34uw03nm"]
+[gd_resource type="Resource" script_class="ScenarioGenerator" format=3 uid="uid://bjilf34uw03nm"]
 
+[ext_resource type="Resource" uid="uid://cy63nyvs0camv" path="res://Scenes/UI/lunchbreak/Lunch1.tres" id="1_kmqbi"]
 [ext_resource type="Resource" uid="uid://h47ln0nc6rqj" path="res://Scenes/UI/lunchbreak/Lunch2.tres" id="1_smmsx"]
 [ext_resource type="Resource" uid="uid://bbb4ju5ii15lg" path="res://Scenes/UI/lunchbreak/Lunch3.tres" id="2_kmqbi"]
 [ext_resource type="Resource" uid="uid://ccd1r3ya0cuvd" path="res://Scenes/UI/lunchbreak/Lunch4.tres" id="3_pasfp"]
@@ -8,5 +9,5 @@
 
 [resource]
 script = ExtResource("5_4y12j")
-all_Scenarios = Array[Resource]([ExtResource("1_smmsx"), ExtResource("2_kmqbi"), ExtResource("3_pasfp"), ExtResource("4_54nn5"), ExtResource("4_54nn5")])
+days_array = Array[Resource]([ExtResource("1_kmqbi"), ExtResource("1_smmsx"), ExtResource("2_kmqbi"), ExtResource("3_pasfp"), ExtResource("4_54nn5")])
 metadata/_custom_type_script = "uid://bmtupw6t7k5gr"
