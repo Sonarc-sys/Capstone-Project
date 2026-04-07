@@ -5,12 +5,12 @@ var score: int = 0 #money
 #add score
 func add_score(amount:int):
 	score += amount
-	print("score has been added to. New score is: $", score)
+	print("score has been added to. Amount added is = ", amount, "New score is: $", score)
 	
 #Subtract score
 func minus_score(amount:int):
 	score -= amount
-	print("score has been subtracted from. New score is: $", score)
+	print("score has been subtracted from. Amount subtracted is = ", amount, "New score is: $", score)
 
 #Reset score on new game
 func reset_score():
