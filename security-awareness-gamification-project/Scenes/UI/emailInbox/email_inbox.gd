@@ -97,6 +97,6 @@ func _on_forward_pressed() -> void:
 	
 	print("The current Score is: ", ScoreManager.score)
 	
-	#Merge to main
+	#Score Merge Check
 	
 	
