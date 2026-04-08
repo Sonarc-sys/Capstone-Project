@@ -21,7 +21,7 @@ func _on_button_pressed() -> void:
 	pass 
 	get_tree().change_scene_to_file("res://Scenes/UI/desktop/desktopUI.tscn")
 
-#Used to update email index maybe try using .find and storing the email itself
+#Used to update email index and store the email object -----------------------------------------------------------------------------------------
 func on_email_selected(email: Email, index):
 	focused_email = email
 	focused_email_index = index
@@ -30,11 +30,20 @@ func on_email_selected(email: Email, index):
 
 
 	
-#Buttons for trash and forwarding emails and scoring.
+#Buttons for trash and forwarding emails and scoring. ------------------------------------------------------------------------------------------
+#Trash button if email is bad
 func _on_trash_pressed() -> void:
 	#resetter if you haven't chosen an email so it doesn't delete for no reason
 	if focused_email == null or focused_email_index == -1:
 		return
+		
+	#Scoring Logic
+	if focused_email.safe_email == false:
+		ScoreManager.add_score(ScoreManager.currentScoreIncrement)
+	else:
+		ScoreManager.minus_score(ScoreManager.currentScoreIncrement)
+	
+	#
 	#deletes focused email
 	EmailGenerator.selected_emails.remove_at(focused_email_index) 
 	
@@ -51,15 +60,24 @@ func _on_trash_pressed() -> void:
 	focused_email = -1
 	focused_email_index = -1
 	
+	print("The current Score is: ", ScoreManager.score)
+	
 	 
 
-
+#Forward Button if email is good
 func _on_forward_pressed() -> void:
 	
 	#resetter if you haven't chosen an email so it doesn't delete for no reason
 	if focused_email == null or focused_email_index == -1:
 		return
 	
+	#Scoring Logic
+		#Scoring Logic
+	if focused_email.safe_email == true:
+		ScoreManager.add_score(ScoreManager.currentScoreIncrement)
+	else:
+		ScoreManager.minus_score(ScoreManager.currentScoreIncrement)
+		
 	#deletes focused email
 	EmailGenerator.selected_emails.remove_at(focused_email_index) 
 	
@@ -76,5 +94,7 @@ func _on_forward_pressed() -> void:
 	#Reset Variables
 	focused_email = -1
 	focused_email_index = -1
+	
+	print("The current Score is: ", ScoreManager.score)
 	
 	
