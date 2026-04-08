@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://tkak00504i5b"]
+[gd_scene format=3 uid="uid://bspemgl7vqdlc"]
 
 [ext_resource type="Script" uid="uid://clqmlxb3qpyd2" path="res://Scripts/UI/toolTips/sticky_tooltip_panel.gd" id="1_ab7jd"]
 
@@ -32,6 +32,8 @@ tab_3/title = "🚫 Blacklist"
 
 [node name="RedFlagsList" type="RichTextLabel" parent="MarginContainer/VBoxContainer/TabContainer" unique_id=955190735]
 layout_mode = 2
+text = "
+"
 metadata/_tab_index = 0
 metadata/_tab_name = "⚠️ Red Flags"
 
