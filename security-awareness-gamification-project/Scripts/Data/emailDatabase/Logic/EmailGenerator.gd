@@ -33,7 +33,7 @@ func load_emails(email_resource_folder, email_number):
 	if all_emails.size() <= email_number:
 		selected_emails = all_emails.duplicate()
 		return
-	var available_indices = all_emails.size()
+	var _available_indices = all_emails.size()
 	var indices = []
 	for i in range(all_emails.size()):
 		indices.append(i)

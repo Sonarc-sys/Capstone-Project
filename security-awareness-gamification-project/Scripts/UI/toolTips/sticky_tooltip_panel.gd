@@ -1,7 +1,7 @@
 extends Panel
 class_name StickyTooltipPanel
 
-# UI References - Make sure these match EXACTLY what's in your scene
+# UI References
 @onready var title_label: Label = $MarginContainer/VBoxContainer/TitleLabel
 @onready var tab_container: TabContainer = $MarginContainer/VBoxContainer/TabContainer
 @onready var red_flags_list: RichTextLabel = $MarginContainer/VBoxContainer/TabContainer/RedFlagsList
@@ -11,26 +11,18 @@ class_name StickyTooltipPanel
 @onready var day_label: Label = $MarginContainer/VBoxContainer/DayLabel
 @onready var close_button: Button = $MarginContainer/VBoxContainer/CloseButton
 
-# References
 var tooltip_manager: TooltipManager
 var current_day: int = 1
 var is_visible_state: bool = false
 var tween: Tween
 
 func _ready() -> void:
-	# Apply styling
 	apply_sticky_style()
-	
-	# Connect close button
 	close_button.pressed.connect(_on_close_pressed)
-	
-	# Hide initially
 	hide()
 	
-	# Wait a frame then find tooltip manager
 	await get_tree().process_frame
 	
-	# Find tooltip manager from autoload
 	if has_node("/root/Global"):
 		tooltip_manager = get_node("/root/Global").tooltip_manager
 		print("✅ Tooltip manager found!")
@@ -39,7 +31,7 @@ func _ready() -> void:
 		print("❌ Global not found! Make sure global.gd is set as autoload")
 
 func apply_sticky_style() -> void:
-	# Panel style
+	# Panel style - yellow sticky note
 	var panel_style = StyleBoxFlat.new()
 	panel_style.bg_color = Color(1.0, 0.96, 0.8)
 	panel_style.set_border_width_all(2)
@@ -58,6 +50,7 @@ func apply_sticky_style() -> void:
 	button_style.set_corner_radius_all(6)
 	close_button.add_theme_stylebox_override("normal", button_style)
 	
+	# Close button hover style
 	var button_hover = StyleBoxFlat.new()
 	button_hover.bg_color = Color(0.9, 0.8, 0.55)
 	button_hover.border_color = Color(0.7, 0.6, 0.4)
@@ -72,56 +65,60 @@ func update_content(day: int = 1) -> void:
 		print("❌ No tooltip_manager found!")
 		return
 	
-	print("Updating content for day ", day)  # Debug print
+	var tips: StickyNoteResource = tooltip_manager.get_tooltips(day)
+	if not tips:
+		print("❌ No tips found for day ", day)
+		return
 	
-	var tips = tooltip_manager.get_tooltips()
+	print("✅ Loading content for Day ", day)
 	
-	# Update day label
-	day_label.text = "📅 Day " + str(current_day) + " Security Training"
+	# Update title and day label
+	title_label.text = "📌 " + tips.title
+	day_label.text = "📅 Day " + str(tips.day_number) + " Training"
 	
 	# Update Red Flags tab
-	var red_flags = tips.get("red_flags", [])
 	var red_text = ""
-	for flag in red_flags:
+	for flag in tips.red_flags:
 		red_text += "⚠️ " + flag + "\n\n"
 	red_flags_list.text = red_text if red_text != "" else "No red flags to display"
-	print("Red flags added: ", red_flags.size())  # Debug print
+	print("   - Red flags displayed: ", tips.red_flags.size())
 	
 	# Update Safe Practices tab
-	var safe_practices = tips.get("safe_practices", [])
 	var safe_text = ""
-	for practice in safe_practices:
+	for practice in tips.safe_practices:
 		safe_text += "✅ " + practice + "\n\n"
 	safe_practices_list.text = safe_text if safe_text != "" else "No safe practices to display"
-	print("Safe practices added: ", safe_practices.size())  # Debug print
+	print("   - Safe practices displayed: ", tips.safe_practices.size())
 	
 	# Update Reference tab
-	var ref_text = "[b]📚 REFERENCE INFORMATION[/b]\n" + tips.get("reference_information", "") + "\n\n"
-	ref_text += "[b]🏢 COMPANY POLICY[/b]\n" + tips.get("company_information", "") + "\n\n"
-	ref_text += "[b]🔍 SENDER VERIFICATION[/b]\n" + tips.get("sender_information", "") + "\n\n"
-	ref_text += "[b]💻 IT DEPARTMENT[/b]\n" + tips.get("it_department_info", "")
+	var ref_text = "[b]📚 REFERENCE INFORMATION[/b]\n" + tips.reference_information + "\n\n"
+	ref_text += "[b]🏢 COMPANY POLICY[/b]\n" + tips.company_information + "\n\n"
+	ref_text += "[b]🔍 SENDER VERIFICATION[/b]\n" + tips.sender_information + "\n\n"
+	ref_text += "[b]💻 IT DEPARTMENT[/b]\n" + tips.it_department_info
 	
-	var sender_list = tips.get("sender_list", [])
-	if sender_list.size() > 0:
+	if tips.sender_list.size() > 0:
 		ref_text += "\n\n[b]✓ KNOWN SAFE SENDERS[/b]\n"
-		for sender in sender_list:
+		for sender in tips.sender_list:
 			ref_text += "• " + sender + "\n"
+	
+	if tips.executive_list.size() > 0:
+		ref_text += "\n[b]👔 EXECUTIVE CONTACTS[/b]\n"
+		for exec in tips.executive_list:
+			ref_text += "• " + exec + "\n"
 	
 	reference_text.text = ref_text
 	
 	# Update Blacklist tab
-	var blacklist = tips.get("blacklist", [])
 	var black_text = ""
-	for domain in blacklist:
+	for domain in tips.blacklist:
 		black_text += "🚫 " + domain + "\n"
 	blacklist_list.text = black_text if black_text != "" else "No blacklisted domains"
+	print("   - Blacklisted domains displayed: ", tips.blacklist.size())
 	
-	print("✅ Content updated successfully!")
+	print("✅ Content updated for Day ", day)
 
 func show_sticky_note(day: int = 1) -> void:
 	update_content(day)
-	
-	# Set size
 	size = Vector2(380, 500)
 	
 	if tween and tween.is_running():
