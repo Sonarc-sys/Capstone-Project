@@ -12,6 +12,7 @@ func display_email(email: Email) -> void:
 		subject.text = email.subject
 		body.text = email.body_text
 		
-		
-		
-		
+func clear_email() -> void:
+	senderInfo.text = ""
+	subject.text = ""
+	body.text = ""		
