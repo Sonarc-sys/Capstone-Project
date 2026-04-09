@@ -12,15 +12,26 @@ func _process(_delta: float) -> void:
 	pass
 
 # New Game Button
+# New Game Button
 func _new_game_pressed() -> void:
 	print("Start Pressed")
+	
+	# --- RESET GLOBAL COUNTERS ---
+	Global.total_emails_done = 0
+	Global.receipt_data.clear()
+	EmailManager.counter = 10 # Or whatever your starting batch size is
+	# -----------------------------
+
 	scoreManager.reset_score()
 	scoreManager.reset_increment()
+	
 	print("Score is: ", scoreManager.score)
 	print("Increment is: ", scoreManager.currentScoreIncrement)
+	
 	EmailManager.reset_incorrect_email_Array()
 	
-	get_tree().change_scene_to_file("res://Scenes/UI/desktop/desktopUI.tscn") #link to load a cutscene for new game
+	# Link to load the desktop
+	get_tree().change_scene_to_file("res://Scenes/UI/desktop/desktopUI.tscn")#new game
 
 # Continue Game Button
 func _on_continue_pressed() -> void:
