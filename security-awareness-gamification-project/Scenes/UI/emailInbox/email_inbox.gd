@@ -7,10 +7,10 @@ var focused_email_index = -1
 # Loads emails and places them in panel on scene load
 func _ready() -> void:
 	#Calls email generator to load emails
-	EmailGenerator.load_emails(EmailGenerator.email_resource_folder, EmailGenerator.email_number)
+	EmailManager.load_emails(EmailManager.email_resource_folder, EmailManager.email_number)
 	
 	#populates left email panel
-	email_list_panel.populate_email_list(EmailGenerator.selected_emails)
+	email_list_panel.populate_email_list(EmailManager.selected_emails)
 	
 	#Listening for signals
 	$"Hbox for EmaiList_Email Body/EmailList Panel".current_email.connect(on_email_selected)
@@ -21,10 +21,6 @@ func _on_button_pressed() -> void:
 	pass 
 	get_tree().change_scene_to_file("res://Scenes/UI/desktop/desktopUI.tscn")
 
-<<<<<<< HEAD
-func _process(_delta: float) -> void:
-	pass
-=======
 #Used to update email index and store the email object -----------------------------------------------------------------------------------------
 func on_email_selected(email: Email, index):
 	focused_email = email
@@ -46,17 +42,18 @@ func _on_trash_pressed() -> void:
 		ScoreManager.add_score(ScoreManager.currentScoreIncrement)
 	else:
 		ScoreManager.minus_score(ScoreManager.currentScoreIncrement)
+		EmailManager.add_incorrect_email(focused_email)
 	
-	#
+	
 	#deletes focused email
-	EmailGenerator.selected_emails.remove_at(focused_email_index) 
+	EmailManager.selected_emails.remove_at(focused_email_index) 
 	
 	#loop erases all current buttons
 	for child in $"Hbox for EmaiList_Email Body/EmailList Panel/ScrollContainer/Vbox Email List".get_children():
 		child.queue_free()
 		
 	#Repopulates the email list with the new array
-	email_list_panel.populate_email_list(EmailGenerator.selected_emails)
+	email_list_panel.populate_email_list(EmailManager.selected_emails)
 	
 	#Clear right side screen
 	$"Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel".clear_email()
@@ -64,7 +61,13 @@ func _on_trash_pressed() -> void:
 	focused_email = -1
 	focused_email_index = -1
 	
-	print("The current Score is: ", ScoreManager.score)
+	#Check to Scene Change to Lunchbreak
+	EmailManager.update_counter()
+	if EmailManager.counter == 5:
+		get_tree().change_scene_to_file("res://Scenes/UI/mainMenu/main_menu.tscn")
+	print("The current email array size is: ", EmailManager.counter)
+	
+		
 	
 	 
 
@@ -81,16 +84,18 @@ func _on_forward_pressed() -> void:
 		ScoreManager.add_score(ScoreManager.currentScoreIncrement)
 	else:
 		ScoreManager.minus_score(ScoreManager.currentScoreIncrement)
+		EmailManager.add_incorrect_email(focused_email)
+
 		
 	#deletes focused email
-	EmailGenerator.selected_emails.remove_at(focused_email_index) 
+	EmailManager.selected_emails.remove_at(focused_email_index) 
 	
 	#loop erases all current buttons
 	for child in $"Hbox for EmaiList_Email Body/EmailList Panel/ScrollContainer/Vbox Email List".get_children():
 		child.queue_free()
 		
 	#Repopulates the email list with the new array
-	email_list_panel.populate_email_list(EmailGenerator.selected_emails)
+	email_list_panel.populate_email_list(EmailManager.selected_emails)
 	
 	#Clear right side screen
 	$"Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel".clear_email()
@@ -99,9 +104,10 @@ func _on_forward_pressed() -> void:
 	focused_email = -1
 	focused_email_index = -1
 	
-	print("The current Score is: ", ScoreManager.score)
+	#Check to Scene Change to Lunchbreak
+	EmailManager.update_counter()
+	if EmailManager.counter == 5:
+		get_tree().change_scene_to_file("res://Scenes/UI/mainMenu/main_menu.tscn")
+	print("The current email array size is: ", EmailManager.counter)
 	
-	#Score Merge Check
 	
-	
->>>>>>> e974fe08b720ed113bef927ae2002d7e7f5fc022

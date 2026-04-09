@@ -4,8 +4,11 @@ extends Node
 @export var email_resource_folder = "res://Scripts/Data/emailDatabase/Emails/Day1/" #must make dynamic after demo
 
 var all_emails: Array[Email] = [] #array storing all emails from source
-var selected_emails: Array[Email] = [] #10 selected emails stored here
+var selected_emails: Array[Email] = [] 
+var counter = 0 #size of emails array
+var incorrect_emails: Array[Email] = [] #stores incorrect emails
 
+#Email Loader
 func load_emails(email_resource_folder, email_number):
 	if all_emails.size() > 0:
 		# Already loaded, skip
@@ -41,4 +44,24 @@ func load_emails(email_resource_folder, email_number):
 	for i in range(email_number):
 			selected_emails.append(all_emails[indices[i]])
 	print("Picked emails")
+	update_counter()
+
+#Functions for counter
+func update_counter():
+	counter = selected_emails.size()
+	
+func reset_counter():
+	counter = 0
+	
+#Functions for incorrect email Array
+
+func reset_incorrect_email_Array():
+	incorrect_emails.clear()
+
+func add_incorrect_email(Email):
+	incorrect_emails.append(Email)
+	print(incorrect_emails)
+	
+	
+	
 	
