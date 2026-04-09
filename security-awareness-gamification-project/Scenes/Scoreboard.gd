@@ -4,7 +4,10 @@ extends CanvasLayer
 @onready var statuslabel = $StatusLabel
 
 func _ready():
+	self.visible = false 
 	display_results()
+	await get_tree().process_frame 
+	self.visible = true
 	
 func display_results():
 	print("--- DISPLAY RESULTS STARTED ---")

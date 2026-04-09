@@ -73,7 +73,7 @@ func show_consequence(right: bool):
 	# Check if we finished the 5th round
 	if rounds_count >= 5:
 		print("Game Over! Switching to Scoreboard...")
-		# DOUBLE CHECK: Ensure this path matches your FileSystem exactly!
+		await get_tree().create_timer(0.5).timeout 
 		get_tree().change_scene_to_file("res://Scenes/Scoreboard.tscn")
 	else:
 		get_next_scenario()
