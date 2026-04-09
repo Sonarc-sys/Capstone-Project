@@ -6,7 +6,8 @@
 [resource]
 script = ExtResource("2_tfpag")
 subject = "YOUR PAYPAL HAS BEEN HACKED! PLEASE CONTACT US NOW TO FIX IT"
-sender = "@fake-paypal.com"
-fullname = "@fake-paypal.com"
+sender = "Dana Collins-PayPal IT Dept"
+fullname = "Dana Collins-PayPal IT Dept"
+full_email_address = "@fake-paypal.com"
 body_text = "Hey, your Paypal information got hacked, and we need to verify and change your account details. Please send us your password, bank-account info, credit card number, and name and we wiil get back to you!"
 metadata/_custom_type_script = "uid://b2i330dxjcox4"

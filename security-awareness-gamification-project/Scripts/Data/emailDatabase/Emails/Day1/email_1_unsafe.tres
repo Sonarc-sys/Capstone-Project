@@ -6,8 +6,9 @@
 [resource]
 script = ExtResource("2_74hbh")
 subject = "URGENT! ACTION NEEDED!"
-sender = "@scam-site.net"
-fullname = "@scam-site.net"
+sender = "Thomas Riddle"
+fullname = "Thomas Riddle"
+full_email_address = "@scam-site.net"
 relevant_info = "@cyber-safe.com"
 body_text = "URGENT! Needs to be addressed and fixed now. Send your email, work info, and card number here."
 metadata/_custom_type_script = "uid://b2i330dxjcox4"

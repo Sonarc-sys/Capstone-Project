@@ -7,6 +7,6 @@
 script = ExtResource("2_tte2k")
 subject = "Friday Quick Meeting"
 sender = "TheBoss@cyber-safe.com"
-fullname = "Boss@cyber-safe.com"
+fullname = "The Boss"
 body_text = "Hey all, just a reminder that we will be having our Friday end-of-day meeting before you clock out of work at 2.00 in Conference Room H. See you there, thanks."
 metadata/_custom_type_script = "uid://b2i330dxjcox4"

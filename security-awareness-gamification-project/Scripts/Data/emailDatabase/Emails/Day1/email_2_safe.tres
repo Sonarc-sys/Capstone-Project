@@ -7,6 +7,7 @@
 script = ExtResource("2_2qkip")
 subject = "Password Update Needed"
 sender = "@cyber-safe.it.com"
-fullname = "@cyber-safe.it.com"
+fullname = "IT Department"
+full_email_address = "@cyber-safe.it.com"
 body_text = "Hey, we are asking all employees to please update their passwords before Friday end of day. Thank you!"
 metadata/_custom_type_script = "uid://b2i330dxjcox4"
