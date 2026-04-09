@@ -111,8 +111,9 @@ func setup_ui() -> void:
 	scroll = ScrollContainer.new()
 	scroll.position = Vector2(15, 150)
 	scroll.size = Vector2(370, 340)
-	scroll.add_theme_stylebox_override("bg", StyleBoxEmpty.new())
+	scroll.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
 	add_child(scroll)
+
 	
 	# Content label
 	content_label = RichTextLabel.new()
