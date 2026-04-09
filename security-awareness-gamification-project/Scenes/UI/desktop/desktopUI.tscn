@@ -1,23 +1,6 @@
 [gd_scene format=3 uid="uid://b6hcoydjk3csb"]
 
 [ext_resource type="Script" uid="uid://bjgerjucbbjmj" path="res://Scenes/UI/desktop/desktop_ui.gd" id="1_ku2ud"]
-<<<<<<< HEAD
-=======
-
-[sub_resource type="GDScript" id="GDScript_ku2ud"]
-script/source = "extends \"res://Scenes/UI/desktop/desktop_ui.gd\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-"
->>>>>>> e974fe08b720ed113bef927ae2002d7e7f5fc022
 
 [node name="DesktopUi" type="Control" unique_id=1870337724]
 layout_mode = 3

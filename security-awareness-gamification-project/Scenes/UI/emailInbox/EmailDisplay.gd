@@ -6,15 +6,10 @@ extends PanelContainer
 
 func _ready() -> void:
 	pass # Replace with function body.
-<<<<<<< HEAD
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-	
-=======
->>>>>>> e974fe08b720ed113bef927ae2002d7e7f5fc022
 	
 func display_email(email: Email) -> void:
 		senderInfo.text = email.fullname + " <" + email.full_email_address + ">"
