@@ -41,20 +41,29 @@ func return_to_menu():
 
 func display_results():
 	var total = 0
+	
+	# 1. Clear the list first
 	for child in mistake_list.get_children():
 		child.queue_free()
 	
+	# 2. Populate the list
 	for entry in Global.receipt_data:
 		var item_row = Button.new()
 		item_row.text = entry["text"] + " | $" + str(entry["cash"])
+		
+		# Set alignment to keep it clean
+		item_row.alignment = HorizontalAlignment.HORIZONTAL_ALIGNMENT_CENTER
+		
 		if entry["cash"] < 0:
 			item_row.add_theme_color_override("font_color", Color.RED)
 		else:
 			item_row.add_theme_color_override("font_color", Color.GREEN)
+			
 		mistake_list.add_child(item_row)
 		total += entry["cash"]
-			
-	total_label.text = "Final Score: $" + str(total)
+	
+	# 3. Update the labels
+	total_label.text = "FINAL SCORE: $" + str(total)
 	
 	if total < 0:
 		statuslabel.text = "STATUS: You're Fired"
