@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EmailDatabase" format=3 uid="uid://btl04fbvm8bgd"]
+
+[ext_resource type="Script" uid="uid://b2i330dxjcox4" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="1_kk6em"]
+[ext_resource type="Script" uid="uid://dho1t2qm4qtjb" path="res://Scripts/Data/emailDatabase/Logic/emailDatabase.gd" id="2_twfd8"]
+[ext_resource type="Resource" uid="uid://crsfmmwpybacf" path="res://Scripts/Data/emailDatabase/Emails/Day1/email_1_unsafe.tres" id="2_wt5ug"]
+[ext_resource type="Resource" uid="uid://5qx7maugf60k" path="res://Scripts/Data/emailDatabase/Emails/Day1/email_2_safe.tres" id="3_10yqr"]
+[ext_resource type="Resource" uid="uid://dmc0xwrum66bj" path="res://Scripts/Data/emailDatabase/Emails/Day1/email_3_unsafe.tres" id="4_xqwr3"]
+[ext_resource type="Resource" uid="uid://cobs8jxfl0wme" path="res://Scripts/Data/emailDatabase/Emails/Day1/email_4_safe.tres" id="5_of72h"]
+[ext_resource type="Resource" uid="uid://qwsv6y2ticr3" path="res://Scripts/Data/emailDatabase/Emails/Day1/email_5_safe.tres" id="6_dthnh"]
+[ext_resource type="Resource" uid="uid://bwjd5skpqmjkg" path="res://Scripts/Data/emailDatabase/Emails/Day1/email_6_safe.tres" id="7_6sugm"]
+[ext_resource type="Resource" uid="uid://dcagapjo5r34x" path="res://Scripts/Data/emailDatabase/Emails/Day1/email_7_unsafe.tres" id="8_q2yyd"]
+[ext_resource type="Resource" uid="uid://55xw1y85po8b" path="res://Scripts/Data/emailDatabase/Emails/Day1/email_8_unsafe.tres" id="9_qrkfq"]
+[ext_resource type="Resource" uid="uid://c4r88w0boefgn" path="res://Scripts/Data/emailDatabase/Emails/Day1/email_9_safe.tres" id="10_v1ass"]
+[ext_resource type="Resource" uid="uid://dth1fo2xmnims" path="res://Scripts/Data/emailDatabase/Emails/Day1/email_10_safe.tres" id="11_21783"]
+[ext_resource type="Resource" uid="uid://c37i3gwqgxmq6" path="res://Scripts/Data/emailDatabase/Emails/Day1/email_11_unsafe.tres" id="12_g4yre"]
+[ext_resource type="Resource" uid="uid://my8uufkucbre" path="res://Scripts/Data/emailDatabase/Emails/Day1/email_12_unsafe.tres" id="13_5ls4r"]
+
+[resource]
+script = ExtResource("2_twfd8")
+emailList = Array[ExtResource("1_kk6em")]([ExtResource("2_wt5ug"), ExtResource("3_10yqr"), ExtResource("4_xqwr3"), ExtResource("5_of72h"), ExtResource("6_dthnh"), ExtResource("7_6sugm"), ExtResource("8_q2yyd"), ExtResource("9_qrkfq"), ExtResource("10_v1ass"), ExtResource("11_21783"), ExtResource("12_g4yre"), ExtResource("13_5ls4r")])
+metadata/_custom_type_script = "uid://dho1t2qm4qtjb"
