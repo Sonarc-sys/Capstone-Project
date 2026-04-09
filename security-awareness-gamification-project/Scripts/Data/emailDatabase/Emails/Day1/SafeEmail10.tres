@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Email" format=3 uid="uid://dth1fo2xmnims"]
+
+[ext_resource type="Script" uid="uid://bucunhkknltf4" path="res://Scripts/Data/emailDatabase/Logic/Attachment.gd" id="1_q044q"]
+[ext_resource type="Script" uid="uid://b2i330dxjcox4" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="2_sl02w"]
+
+[resource]
+script = ExtResource("2_sl02w")
+subject = "Scheduled Password Reset Notification"
+sender = "itsecurity@cybersafe.com"
+fullname = "David Chen"
+full_email_address = "david.chen@cybersafe-it.com"
+receiver = "employee@cybersafe.com"
+relevant_info = "90-day password expiration requires reset by April 15"
+body_text = "Dear Employee, This is a notification that your password will expire in 7 days as part of our standard 90-day security rotation. To reset your password, please go to the company internal portal at https://internal.cybersafe.com/reset-password. You will need to verify your identity using your employee ID and current password. Your new password must be at least 12 characters and include a mix of letters, numbers, and special characters. Once reset, you can continue using all systems as normal. If you need assistance, please contact the IT Help Desk at x555-0456 or email support@cybersafe.com. Thank you for helping us keep our systems secure. Best regards, David Chen IT Security Team Cybersafe Corporation"
+metadata/_custom_type_script = "uid://b2i330dxjcox4"
