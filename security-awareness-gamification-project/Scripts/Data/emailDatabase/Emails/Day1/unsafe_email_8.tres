@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Email" format=3 uid="uid://55xw1y85po8b"]
+
+[ext_resource type="Script" uid="uid://bucunhkknltf4" path="res://Scripts/Data/emailDatabase/Logic/Attachment.gd" id="1_4rmai"]
+[ext_resource type="Script" uid="uid://b2i330dxjcox4" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="2_1dw1a"]
+
+[resource]
+script = ExtResource("2_1dw1a")
+safe_email = false
+subject = "Alummni Meeting"
+fullname = "Sheridan Alumni Association"
+full_email_address = "AsocAlum@sheradancolege.com"
+body_text = "Please give me your phone number for further contact to plan the allumni meeting"
+metadata/_custom_type_script = "uid://b2i330dxjcox4"

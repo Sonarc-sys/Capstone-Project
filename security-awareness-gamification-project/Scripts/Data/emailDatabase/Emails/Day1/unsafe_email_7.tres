@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Email" format=3 uid="uid://dcagapjo5r34x"]
+
+[ext_resource type="Script" uid="uid://bucunhkknltf4" path="res://Scripts/Data/emailDatabase/Logic/Attachment.gd" id="1_3mndt"]
+[ext_resource type="Script" uid="uid://b2i330dxjcox4" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="2_ahx6i"]
+
+[resource]
+script = ExtResource("2_ahx6i")
+safe_email = false
+subject = "Contact Update"
+fullname = "Sammy"
+full_email_address = "colin@cybersefe.com"
+body_text = "Hi, Please respond and give me an updated contact list of all the executives in the company for our records update. Thank you"
+metadata/_custom_type_script = "uid://b2i330dxjcox4"

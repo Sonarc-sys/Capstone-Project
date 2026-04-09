@@ -54,6 +54,7 @@ offset_left = 237.0
 offset_top = 125.0
 offset_right = 1148.0
 offset_bottom = 642.0
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_5unkl")
 metadata/_edit_lock_ = true
 
@@ -109,6 +110,7 @@ text = "Forward"
 
 [node name="Email Content Panel" type="PanelContainer" parent="Hbox for EmaiList_Email Body/Vbox Right side Email" unique_id=852344078]
 layout_mode = 2
+size_flags_vertical = 3
 script = ExtResource("3_46t6v")
 
 [node name="Vbox Email Container" type="VBoxContainer" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel" unique_id=669903694]
