@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StickyNoteResource" format=3 uid="uid://bkpjw1sko6aeo"]
+
+[ext_resource type="Script" uid="uid://dw7gu3dyw3rl6" path="res://Scripts/Data/toolTips/toolTip Logic/sticky_note_resource.gd" id="1_38eju"]
+
+[resource]
+script = ExtResource("1_38eju")
+advice = "Welcome to Email Security Training! Always verify sender information before forwarding emails."
+reference_information = "Legitimate company emails come from official domains like @company.com or @business.org"
+company_information = "Our company policy: We never ask for passwords, personal info, or financial data via email."
+sender_information = "Check for misspelled sender names (e.g., amaz0n.com instead of amazon.com)"
+it_department_info = "IT Security will never ask for your password. Report suspicious emails to security@cybersafe.com"
+sender_list = Array[String](["admin@cybersafe.com", "hr@cybersafe.com", "itsecurity@cybersafe.com"])
+blacklist = Array[String](["@scam-site.net", "@fake-paypal.com", "@phishing-attempt.org"])
+executive_list = Array[String](["sarah.johnson@cybersafe.com (CEO)", "mike.chen@cybersafe.com (CTO)"])
+red_flags = Array[String](["Urgent or threatening language", "Requests for personal information", "Suspicious attachments", "Mismatched URLs", "Poor grammar or spelling"])
+safe_practices = Array[String](["Hover over links before clicking", "Verify sender email address", "Check for official company branding", "When in doubt, ask IT department"])
+metadata/_custom_type_script = "uid://dw7gu3dyw3rl6"
