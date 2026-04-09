@@ -19,7 +19,8 @@ func _new_game_pressed() -> void:
 	# --- RESET GLOBAL COUNTERS ---
 	Global.total_emails_done = 0
 	Global.receipt_data.clear()
-	EmailManager.counter = 10 # Or whatever your starting batch size is
+	EmailManager.counter = 10 
+	EmailManager.session = false
 	# -----------------------------
 
 	scoreManager.reset_score()

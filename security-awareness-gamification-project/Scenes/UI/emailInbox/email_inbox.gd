@@ -7,10 +7,11 @@ var focused_email_index = -1
 # Loads emails and places them in panel on scene load
 func _ready() -> void:
 	#Calls email generator to load emails
-	EmailManager.load_emails(EmailManager.email_resource_folder, EmailManager.email_number)
+	EmailManager.load_emails(1, EmailManager.email_number)
 	
 	#populates left email panel
 	email_list_panel.populate_email_list(EmailManager.selected_emails)
+	
 	
 	#Listening for signals
 	$"Hbox for EmaiList_Email Body/EmailList Panel".current_email.connect(on_email_selected)
