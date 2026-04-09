@@ -55,17 +55,18 @@ func reset_counter():
 
 
 func process_email_choice(is_phish_button_pressed: bool, current_email: Email):
-	# Determine if the user was actually correct based on the Email resource data
 	var user_was_correct = (is_phish_button_pressed == current_email.is_phishing)
 
 	if user_was_correct:
-		Global.add_receipt_entry(50, "Correctly Identified Email", false)
+		# This line talks to the Scoreboard!
+		Global.add_receipt_entry(50, "Email Correctly Identified", false)
+		print("✅ Correct email choice recorded in Global.")
 	else:
+		# This line talks to the Scoreboard!
 		Global.add_receipt_entry(-100, "Phishing Link Clicked: " + current_email.sender_name, true)
-		# Existing logic to track mistakes for the final review
+		print("❌ Incorrect email choice recorded in Global.")
 		add_incorrect_email(current_email)
 	
-	# After scoring, we trigger the counter check
 	finish_email_round()
 	
 #Functions for incorrect email Array
@@ -80,12 +81,18 @@ func add_incorrect_email(Email):
 
 func finish_email_round():
 	counter -= 1
-	print("Emails remaining: ", counter)
+	Global.total_emails_done += 1
 	
-	if counter <= 0:
-		print("Emails done! Moving to Social Scenarios...")
-		get_tree().change_scene_to_file("res://Scenes/UI/lunchbre/lunchbreak.tscn")
+	print("Emails left in batch: ", counter)
+	print("Total emails done today: ", Global.total_emails_done)
+	
+	if Global.total_emails_done >= 20:
+		# Day is over
+		get_tree().change_scene_to_file("res://Scenes/Scoreboard.tscn")
+	elif counter <= 0:
+		# Batch of 5 is over, go to lunch
+		counter = 5 # Reset for when we come back
+		get_tree().change_scene_to_file("res://Scenes/UI/lunchbreak/lunchbreak.tscn")
 	else:
+		# Do nothing and stay in the scene for the next email
 		pass
-	
-	

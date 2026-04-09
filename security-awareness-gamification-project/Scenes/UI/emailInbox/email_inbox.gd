@@ -36,7 +36,8 @@ func _on_trash_pressed() -> void:
 	#resetter if you haven't chosen an email so it doesn't delete for no reason
 	if focused_email == null or focused_email_index == -1:
 		return
-		
+
+
 	#Scoring Logic
 	if focused_email.safe_email == false:
 		scoreManager.add_score(scoreManager.currentScoreIncrement)
@@ -63,6 +64,8 @@ func _on_trash_pressed() -> void:
 	
 	#Check to Scene Change to Lunchbreak
 	EmailManager.update_counter()
+	if EmailManager.counter == 0:
+		get_tree().change_scene_to_file("res://Scenes/Scoreboard.tscn")
 	if EmailManager.counter == 5:
 		get_tree().change_scene_to_file("res://Scenes/UI/lunchbreak/lunchbreak.tscn")
 	print("The current email array size is: ", EmailManager.counter)
@@ -77,7 +80,6 @@ func _on_forward_pressed() -> void:
 	#resetter if you haven't chosen an email so it doesn't delete for no reason
 	if focused_email == null or focused_email_index == -1:
 		return
-	
 	#Scoring Logic
 		#Scoring Logic
 	if focused_email.safe_email == true:
@@ -106,6 +108,8 @@ func _on_forward_pressed() -> void:
 	
 	#Check to Scene Change to Lunchbreak
 	EmailManager.update_counter()
+	if EmailManager.counter == 0:
+		get_tree().change_scene_to_file("res://Scenes/Scoreboard.tscn")
 	if EmailManager.counter == 5:
 		get_tree().change_scene_to_file("res://Scenes/UI/lunchbreak/lunchbreak.tscn")
 	print("The current email array size is: ", EmailManager.counter)

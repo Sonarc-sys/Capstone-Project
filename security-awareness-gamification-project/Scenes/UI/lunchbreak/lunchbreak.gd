@@ -25,16 +25,16 @@ func display_scenario(scenario: Resource):
 var current_scen: Resource
 
 func _ready() -> void:
-	randomize()
+	randomize() # Ensures true randomness on your Windows 11 PC
 	consequence_panel.hide()
 	
 	if scenario_generator:
-		# SHUFFLE ONCE at the very start of the game
-		scenario_generator.days_array.shuffle()
-		# Start with the first card (Index 0)
-		display_scenario(scenario_generator.days_array[0])
-			
-			
+		# Pick a completely random index from your list
+		var list_size = scenario_generator.days_array.size()
+		var random_index = randi() % list_size
+		
+		# Display that random card
+		display_scenario(scenario_generator.days_array[random_index])
 			
 			
 func _process_choice(index: int):
@@ -67,16 +67,17 @@ func show_consequence(right: bool):
 	if res_label:
 		res_label.text = result_text + current_scen.consequence_Text
 	
-	# Wait for the player to read the result of the 5th scenario
+	# Wait for the player to read
 	await get_tree().create_timer(2.0).timeout
 	
-	# Check if we finished the 5th round
-	if rounds_count >= 5:
-		print("Game Over! Switching to Scoreboard...")
-		await get_tree().create_timer(0.5).timeout 
-		get_tree().change_scene_to_file("res://Scenes/Scoreboard.tscn")
-	else:
-		get_next_scenario()
+	# IMPORTANT: You MUST right-click your Email scene in the FileSystem 
+	# and "Copy Path", then paste it between these quotes:
+	var email_scene_path = "res://Scenes/UI/emailInbox/emailInbox.tscn" 
+	
+	print("Attempting to go back to work...")
+	get_tree().change_scene_to_file(email_scene_path)
+		
+	
 # Signals from Inspector
 func _on_button_pressed() -> void:
 	_process_choice(0)
@@ -102,3 +103,14 @@ func get_next_scenario():
 		else:
 			# Safety transition to scoreboard if count gets too high
 			get_tree().change_scene_to_file("res://Scenes/UI/Scoreboard.tscn")
+
+
+func on_scenario_finished():
+	# We only want 1 round per lunch break now
+	rounds_count += 1 
+	
+	if rounds_count >= 1:
+		print("Lunch over! Back to work...")
+		await get_tree().create_timer(1.0).timeout
+		# Switch back to your Email scene
+		get_tree().change_scene_to_file("res://Scenes/UI/Emails/EmailScene.tscn")

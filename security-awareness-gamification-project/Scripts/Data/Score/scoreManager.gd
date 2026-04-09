@@ -5,14 +5,23 @@ var currentScoreIncrement = 10 #increment control
 
 #Score Methods ------------------------------------------------------------------------------
 #add score
-func add_score(amount:int):
+# Inside scoreManager.gd
+
+# add score
+func add_score(amount: int):
 	score += amount
 	print("score has been added to. Amount added is = ", amount, " New score is: $", score)
 	
-#Subtract score
-func minus_score(amount:int):
+	# ADD THIS LINE to send data to the Scoreboard:
+	Global.add_receipt_entry(amount, "Email Task Completed", false)
+
+# Subtract score
+func minus_score(amount: int):
 	score -= amount
 	print("score has been subtracted from. Amount subtracted is = ", amount, " New score is: $", score)
+	
+	# ADD THIS LINE to send data to the Scoreboard:
+	Global.add_receipt_entry(-amount, "Phishing Security Failure", true)
 
 #Reset score on new game
 func reset_score():

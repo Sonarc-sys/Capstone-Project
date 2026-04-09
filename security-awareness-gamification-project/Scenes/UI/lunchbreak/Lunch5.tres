@@ -8,4 +8,5 @@ script = ExtResource("1_56n3o")
 scenario_text = "A friend wants to use your employee ID card to go work out because they forgot their id card."
 scenario_image = ExtResource("1_57n65")
 thechoices = Array[String](["Give your Company ID.", "Decline, and remind them of company policy on this matter."])
+correct_choiceindex = 1
 metadata/_custom_type_script = "uid://bmtupw6t7k5gr"

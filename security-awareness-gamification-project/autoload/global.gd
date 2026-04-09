@@ -8,6 +8,10 @@ var tooltip_manager: TooltipManager
 # This fixes the "Nonexistent function 'add_receipt_entry'" error
 var receipt_data: Array = []
 
+
+var total_emails_done: int = 0
+
+
 func _ready() -> void:
 	print("🌍 Global Master Autoload initializing...")
 	
@@ -20,23 +24,13 @@ func _ready() -> void:
 # The function used by Lunchbreak and EmailManager
 func add_receipt_entry(cash: int, text: String, is_mistake: bool):
 	var entry = {
-		"cash": cash,
 		"text": text,
+		"cash": cash,
 		"mistake": is_mistake
 	}
 	receipt_data.append(entry)
-	
-	# Communicate with your scoreManager Autoload
-	if has_node("/root/scoreManager"):
-		var sm = get_node("/root/scoreManager")
-		if cash > 0:
-			sm.add_score(cash)
-		else:
-			sm.minus_score(abs(cash))
-	else:
-		print("Warning: scoreManager not found in Autoloads!")
+
 
 func reset_day():
 	receipt_data.clear()
-	if has_node("/root/scoreManager"):
-		get_node("/root/scoreManager").reset_score()
+	total_emails_done = 0 # Reset this so a new game starts at 0 emails
