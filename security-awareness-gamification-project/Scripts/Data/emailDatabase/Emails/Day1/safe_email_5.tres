@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Email" format=3 uid="uid://qwsv6y2ticr3"]
+
+[ext_resource type="Script" uid="uid://bucunhkknltf4" path="res://Scripts/Data/emailDatabase/Logic/Attachment.gd" id="1_v4vvl"]
+[ext_resource type="Script" uid="uid://b2i330dxjcox4" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="2_3bx56"]
+
+[resource]
+script = ExtResource("2_3bx56")
+subject = "Congratulations"
+fullname = "Hiring Coordinator"
+full_email_address = "Sammy@cybersafe.com"
+body_text = "Hello,  I just wanted to offer my since congratulations for suceeding in the interview. I hope you have a good experience working here that helps you grow as a person and employee. Thank you for choosing us aned i hope you have a good day.  Sincerely,  Sammy"
+metadata/_custom_type_script = "uid://b2i330dxjcox4"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Email" format=3 uid="uid://bwjd5skpqmjkg"]
+
+[ext_resource type="Script" uid="uid://bucunhkknltf4" path="res://Scripts/Data/emailDatabase/Logic/Attachment.gd" id="1_7r8lr"]
+[ext_resource type="Script" uid="uid://b2i330dxjcox4" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="2_dwwrr"]
+
+[resource]
+script = ExtResource("2_dwwrr")
+subject = "Payroll"
+fullname = "Duston Mathews"
+full_email_address = "duston@cybersafe.com"
+body_text = "Hello, I just wanted to inquire about the payroll cuts that will be happening this quater and what percentage we should slash. please respond asap."
+metadata/_custom_type_script = "uid://b2i330dxjcox4"
