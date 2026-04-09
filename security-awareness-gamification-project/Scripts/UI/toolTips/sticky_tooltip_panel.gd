@@ -3,17 +3,16 @@ class_name StickyTooltipPanel
 
 var tooltip_manager: TooltipManager
 var current_day: int = 1
-var current_section: int = 0  # 0=Red Flags, 1=Safe Practices, 2=Reference, 3=Blacklist
+var current_section: int = 0
 var is_visible_state: bool = false
 
-# Section names
-var section_names = ["⚠️ Red Flags", "✅ Safe Practices", "📋 Reference", "🚫 Blacklist"]
+var section_names = ["RED FLAGS", "SAFE PRACTICES", "REFERENCE", "BLACKLIST"]
 
 # UI elements
 var title_label: Label
 var section_title: Label
 var scroll: ScrollContainer
-var content_label: RichTextLabel
+var content_label: Label
 var close_button: Button
 var prev_button: Button
 var next_button: Button
@@ -24,15 +23,15 @@ func _ready() -> void:
 	hide()
 	
 	await get_tree().process_frame
+	await get_tree().process_frame
+	
 	if has_node("/root/Global"):
 		tooltip_manager = get_node("/root/Global").tooltip_manager
 		if tooltip_manager:
-			print("✅ Tooltip manager found!")
 			update_content()
 
 func setup_ui() -> void:
-	# Panel size
-	size = Vector2(400, 550)
+	size = Vector2(500, 600)
 	
 	# Yellow sticky note style
 	var panel_style = StyleBoxFlat.new()
@@ -48,16 +47,16 @@ func setup_ui() -> void:
 	# Title
 	title_label = Label.new()
 	title_label.position = Vector2(25, 20)
-	title_label.size = Vector2(350, 40)
-	title_label.add_theme_font_size_override("font_size", 22)
-	title_label.add_theme_color_override("font_color", Color(0.5, 0.35, 0.1))
-	title_label.text = "📌 Security Tips"
+	title_label.size = Vector2(450, 40)
+	title_label.add_theme_font_size_override("font_size", 24)
+	title_label.add_theme_color_override("font_color", Color.BLACK)
+	title_label.text = "📌 SECURITY TIPS"
 	add_child(title_label)
 	
-	# Section navigation bar
+	# Navigation bar
 	var nav_bar = HBoxContainer.new()
 	nav_bar.position = Vector2(25, 65)
-	nav_bar.size = Vector2(350, 35)
+	nav_bar.size = Vector2(450, 35)
 	add_child(nav_bar)
 	
 	# Previous button
@@ -75,9 +74,9 @@ func setup_ui() -> void:
 	
 	# Section indicator
 	section_indicator = Label.new()
-	section_indicator.size = Vector2(180, 35)
-	section_indicator.add_theme_font_size_override("font_size", 13)
-	section_indicator.add_theme_color_override("font_color", Color(0.5, 0.35, 0.1))
+	section_indicator.size = Vector2(250, 35)
+	section_indicator.add_theme_font_size_override("font_size", 14)
+	section_indicator.add_theme_color_override("font_color", Color.BLACK)
 	section_indicator.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
 	# Next button
@@ -91,44 +90,44 @@ func setup_ui() -> void:
 	nav_bar.add_child(section_indicator)
 	nav_bar.add_child(next_button)
 	
-	# Section title (current section name)
+	# Section title
 	section_title = Label.new()
-	section_title.position = Vector2(25, 105)
-	section_title.size = Vector2(350, 30)
+	section_title.position = Vector2(25, 108)
+	section_title.size = Vector2(450, 30)
 	section_title.add_theme_font_size_override("font_size", 18)
-	section_title.add_theme_color_override("font_color", Color(0.4, 0.3, 0.15))
+	section_title.add_theme_color_override("font_color", Color.BLACK)
 	section_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	add_child(section_title)
 	
 	# Decorative line
 	var line = ColorRect.new()
-	line.position = Vector2(25, 140)
-	line.size = Vector2(350, 2)
+	line.position = Vector2(25, 143)
+	line.size = Vector2(450, 2)
 	line.color = Color(0.85, 0.75, 0.5)
 	add_child(line)
 	
-	# Scroll container for content
+	# Scroll container
 	scroll = ScrollContainer.new()
-	scroll.position = Vector2(15, 150)
-	scroll.size = Vector2(370, 340)
-	scroll.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
+	scroll.position = Vector2(15, 153)
+	scroll.size = Vector2(470, 380)
+	scroll.add_theme_stylebox_override("bg", StyleBoxEmpty.new())
 	add_child(scroll)
-
 	
-	# Content label
-	content_label = RichTextLabel.new()
-	content_label.size = Vector2(350, 600)
-	content_label.fit_content = true
+	# Content label - simple setup
+	content_label = Label.new()
+	content_label.position = Vector2(10, 10)
+	content_label.size = Vector2(440, 400)
+	content_label.add_theme_font_size_override("font_size", 14)
+	content_label.add_theme_color_override("font_color", Color.BLACK)
 	content_label.autowrap_mode = TextServer.AUTOWRAP_WORD
-	content_label.add_theme_font_size_override("normal_font_size", 14)
-	content_label.add_theme_color_override("default_color", Color(0.3, 0.25, 0.15))
+	content_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	scroll.add_child(content_label)
 	
 	# Close button
 	close_button = Button.new()
 	close_button.text = "Got it! ✨"
-	close_button.position = Vector2(140, 500)
-	close_button.size = Vector2(120, 35)
+	close_button.position = Vector2(190, 545)
+	close_button.size = Vector2(120, 38)
 	
 	var button_normal = StyleBoxFlat.new()
 	button_normal.bg_color = Color(0.95, 0.85, 0.65)
@@ -144,7 +143,7 @@ func setup_ui() -> void:
 	
 	close_button.add_theme_stylebox_override("normal", button_normal)
 	close_button.add_theme_stylebox_override("hover", button_hover)
-	close_button.add_theme_color_override("font_color", Color(0.4, 0.3, 0.1))
+	close_button.add_theme_color_override("font_color", Color.BLACK)
 	close_button.add_theme_font_size_override("font_size", 14)
 	
 	close_button.pressed.connect(_on_close_pressed)
@@ -182,54 +181,40 @@ func update_content() -> void:
 	
 	var tips = tooltip_manager.get_tooltips(current_day)
 	if not tips:
-		content_label.text = "[center]No tips found![/center]"
+		content_label.text = "No tips found"
 		return
 	
-	# Build content based on current section
-	var content_text = ""
+	var text = ""
 	
 	match current_section:
 		0:  # Red Flags
-			content_text = "[center][b][color=#C62828]⚠️ WATCH FOR THESE RED FLAGS ⚠️[/color][/b][/center]\n\n"
-			for flag in tips.red_flags:
-				content_text += "• [color=#C62828]⚠️[/color] " + flag + "\n\n"
-			if tips.red_flags.size() == 0:
-				content_text += "[center]No red flags for this day.[/center]"
+			text = "RED FLAGS:\n\n"
+			for i in range(tips.red_flags.size()):
+				text += "• " + tips.red_flags[i] + "\n"
 		
 		1:  # Safe Practices
-			content_text = "[center][b][color=#2E7D32]✅ SAFE PRACTICES TO FOLLOW ✅[/color][/b][/center]\n\n"
-			for practice in tips.safe_practices:
-				content_text += "• [color=#2E7D32]✅[/color] " + practice + "\n\n"
-			if tips.safe_practices.size() == 0:
-				content_text += "[center]No safe practices for this day.[/center]"
+			text = "SAFE PRACTICES:\n\n"
+			for i in range(tips.safe_practices.size()):
+				text += "• " + tips.safe_practices[i] + "\n"
 		
 		2:  # Reference
-			content_text = "[center][b][color=#1565C0]📚 REFERENCE INFORMATION 📚[/color][/b][/center]\n\n"
-			content_text += "[b]🏢 Company Policy:[/b]\n" + tips.company_information + "\n\n"
-			content_text += "[b]🔍 Sender Verification:[/b]\n" + tips.sender_information + "\n\n"
-			content_text += "[b]💻 IT Department:[/b]\n" + tips.it_department_info + "\n\n"
-			if tips.reference_information != "":
-				content_text += "[b]📖 Additional Info:[/b]\n" + tips.reference_information + "\n\n"
+			text = "REFERENCE:\n\n"
+			text += "Company Policy: " + tips.company_information + "\n\n"
+			text += "Sender Verification: " + tips.sender_information + "\n\n"
+			text += "IT Department: " + tips.it_department_info + "\n\n"
 			
-			# Add safe senders
 			if tips.sender_list.size() > 0:
-				content_text += "[b]✓ Known Safe Senders:[/b]\n"
-				for sender in tips.sender_list:
-					content_text += "  • " + sender + "\n"
+				text += "Known Safe Senders:\n"
+				for i in range(tips.sender_list.size()):
+					text += "• " + tips.sender_list[i] + "\n"
 		
 		3:  # Blacklist
-			content_text = "[center][b][color=#6A1B9A]🚫 BLACKLISTED DOMAINS 🚫[/color][/b][/center]\n\n"
-			if tips.blacklist.size() > 0:
-				for domain in tips.blacklist:
-					content_text += "• [color=#6A1B9A]🚫[/color] " + domain + "\n\n"
-			else:
-				content_text += "[center]No blacklisted domains for this day.[/center]"
+			text = "BLACKLISTED DOMAINS:\n\n"
+			for i in range(tips.blacklist.size()):
+				text += "• " + tips.blacklist[i] + "\n"
 	
-	# Add footer
-	content_text += "\n[center][color=#888888]━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/color]\n"
-	content_text += "[i]Stay vigilant! When in doubt, ask IT.[/i][/center]"
-	
-	content_label.text = content_text
+	content_label.text = text
+	print("Content updated - section: ", current_section)
 
 func show_sticky_note(day: int = 1) -> void:
 	current_day = day
@@ -255,5 +240,13 @@ func toggle_sticky_note(day: int = 1) -> void:
 
 func position_in_corner(corner: String = "top_right", margin: int = 20) -> void:
 	await get_tree().process_frame
-	var viewport_size = get_viewport_rect().size
-	position = Vector2(viewport_size.x - size.x - margin, margin)
+	var viewport_size = get_viewport().get_visible_rect().size
+	match corner:
+		"top_right":
+			position = Vector2(viewport_size.x - size.x - margin, margin)
+		"top_left":
+			position = Vector2(margin, margin)
+		"bottom_right":
+			position = Vector2(viewport_size.x - size.x - margin, viewport_size.y - size.y - margin)
+		"bottom_left":
+			position = Vector2(margin, viewport_size.y - size.y - margin)
