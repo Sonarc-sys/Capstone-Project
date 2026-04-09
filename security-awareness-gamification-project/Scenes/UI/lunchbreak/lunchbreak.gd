@@ -25,24 +25,18 @@ func display_scenario(scenario: Resource):
 var current_scen: Resource
 
 func _ready() -> void:
-	# 1. Shuffle the engine's internal math
-	randomize() 
-	
+	randomize()
 	consequence_panel.hide()
 	
 	if scenario_generator:
-		# 2. Access the array directly from the resource
-		var list = scenario_generator.days_array 
-		
-		if list.size() > 0:
-			# 3. Generate a random index right here
-			var random_index = randi() % list.size()
-			var picked_scen = list[random_index]
+		# SHUFFLE ONCE at the very start of the game
+		scenario_generator.days_array.shuffle()
+		# Start with the first card (Index 0)
+		display_scenario(scenario_generator.days_array[0])
 			
-			# 4. Show it
-			display_scenario(picked_scen)
-		else:
-			print("The days_array is empty!")
+			
+			
+			
 func _process_choice(index: int):
 	# 1. STOP if the panel is already visible (Double-click protection)
 	if consequence_panel.visible:
@@ -88,18 +82,20 @@ func _on_button_2_pressed() -> void:
 	_process_choice(1)
 
 
+
 func get_next_scenario():
-	# 1. Reset the UI state
 	consequence_panel.hide()
-	current_scen = null # Clear the old reference
-	option1_butt.disabled = false
-	option2_butt.disabled = false
 	
-	# 2. Pick the new scenario
 	if scenario_generator:
-		var list = scenario_generator.days_array 
-		if list.size() > 0:
-			# Shuffle ensure variety every single time
-			list.shuffle() 
-			var picked = list[0]
-			display_scenario(picked)
+		var list = scenario_generator.days_array
+		# Since rounds_count goes 1, 2, 3, 4... we use it to grab the NEXT card
+		if rounds_count < list.size():
+			var picked_scen = list[rounds_count]
+			display_scenario(picked_scen)
+			
+			# IMPORTANT: Re-enable buttons so they can be clicked again
+			option1_butt.disabled = false
+			option2_butt.disabled = false
+		else:
+			# Safety transition to scoreboard if count gets too high
+			get_tree().change_scene_to_file("res://Scenes/UI/Scoreboard.tscn")
