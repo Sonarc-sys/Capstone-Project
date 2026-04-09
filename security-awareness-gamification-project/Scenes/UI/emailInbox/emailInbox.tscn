@@ -134,6 +134,7 @@ layout_mode = 2
 
 [node name="Body" type="Label" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Email Container" unique_id=208142583]
 layout_mode = 2
+autowrap_mode = 2
 
 [connection signal="pressed" from="Desktop Shortcut" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Hbox for EmaiList_Email Body/Vbox Right side Email/Forward_Trash Hbox/Trash" to="." method="_on_trash_pressed"]
