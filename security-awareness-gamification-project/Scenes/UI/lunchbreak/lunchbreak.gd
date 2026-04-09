@@ -44,12 +44,16 @@ func _ready() -> void:
 		else:
 			print("The days_array is empty!")
 func _process_choice(index: int):
-	# SAFETY CHECK: If the panel is already up, ignore extra clicks
+	# 1. STOP if the panel is already visible (Double-click protection)
 	if consequence_panel.visible:
 		return
 		
 	if not current_scen: 
 		return
+	
+	# 2. LOCK buttons immediately
+	option1_butt.disabled = true
+	option2_butt.disabled = true
 	
 	var is_right = (index == current_scen.correct_choiceindex)
 
@@ -57,30 +61,25 @@ func _process_choice(index: int):
 		Global.add_receipt_entry(100, "Secure Decision", false)
 	else:
 		Global.add_receipt_entry(-500, current_scen.scenario_text, true)
-	rounds_count += 1
 	
-	# Transition to showing the result
+	rounds_count += 1
 	show_consequence(is_right)
 
 func show_consequence(right: bool):
 	consequence_panel.show()
-	var result_text = "This is right, nice job! " if right else "Sorry, this is not right. "
+	var result_text = "CORRECT! " if right else "INCORRECT. "
 	
 	var res_label = consequence_panel.get_node_or_null("ResultLabel")
 	if res_label:
 		res_label.text = result_text + current_scen.consequence_Text
 	
-	# Wait 2 seconds for the player to read
+	# Wait exactly 2 seconds
 	await get_tree().create_timer(2.0).timeout
 	
-	# DECIDE WHAT HAPPENS AFTER THE TIMER
 	if rounds_count >= 5:
-		# GO TO SCOREBOARD
 		get_tree().change_scene_to_file("res://Scenes/UI/Scoreboard.tscn")
 	else:
-		# GO TO NEXT SCENARIO
 		get_next_scenario()
-
 # Signals from Inspector
 func _on_button_pressed() -> void:
 	_process_choice(0)
@@ -90,12 +89,17 @@ func _on_button_2_pressed() -> void:
 
 
 func get_next_scenario():
-	# Hide the feedback panel so we can see the new question
+	# 1. Reset the UI state
 	consequence_panel.hide()
+	current_scen = null # Clear the old reference
+	option1_butt.disabled = false
+	option2_butt.disabled = false
 	
+	# 2. Pick the new scenario
 	if scenario_generator:
 		var list = scenario_generator.days_array 
 		if list.size() > 0:
-			var random_index = randi() % list.size()
-			var picked_scen = list[random_index]
-			display_scenario(picked_scen)
+			# Shuffle ensure variety every single time
+			list.shuffle() 
+			var picked = list[0]
+			display_scenario(picked)
