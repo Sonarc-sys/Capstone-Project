@@ -42,6 +42,7 @@ func _on_trash_pressed() -> void:
 		ScoreManager.add_score(ScoreManager.currentScoreIncrement)
 	else:
 		ScoreManager.minus_score(ScoreManager.currentScoreIncrement)
+		EmailManager.add_incorrect_email(focused_email)
 	
 	
 	#deletes focused email
@@ -83,6 +84,8 @@ func _on_forward_pressed() -> void:
 		ScoreManager.add_score(ScoreManager.currentScoreIncrement)
 	else:
 		ScoreManager.minus_score(ScoreManager.currentScoreIncrement)
+		EmailManager.add_incorrect_email(focused_email)
+
 		
 	#deletes focused email
 	EmailManager.selected_emails.remove_at(focused_email_index) 

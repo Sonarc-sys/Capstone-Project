@@ -18,6 +18,7 @@ func _new_game_pressed() -> void:
 	ScoreManager.reset_increment()
 	print("Score is: ", ScoreManager.score)
 	print("Increment is: ", ScoreManager.currentScoreIncrement)
+	EmailManager.reset_incorrect_email_Array()
 	
 	get_tree().change_scene_to_file("res://Scenes/UI/desktop/desktopUI.tscn") #link to load a cutscene for new game
 

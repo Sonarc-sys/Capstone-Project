@@ -8,6 +8,7 @@ var selected_emails: Array[Email] = []
 var counter = 0 #size of emails array
 var incorrect_emails: Array[Email] = [] #stores incorrect emails
 
+#Email Loader
 func load_emails(email_resource_folder, email_number):
 	if all_emails.size() > 0:
 		# Already loaded, skip
@@ -51,5 +52,16 @@ func update_counter():
 	
 func reset_counter():
 	counter = 0
+	
+#Functions for incorrect email Array
+
+func reset_incorrect_email_Array():
+	incorrect_emails.clear()
+
+func add_incorrect_email(Email):
+	incorrect_emails.append(Email)
+	print(incorrect_emails)
+	
+	
 	
 	
