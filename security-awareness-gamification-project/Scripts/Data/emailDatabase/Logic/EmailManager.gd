@@ -52,6 +52,21 @@ func update_counter():
 	
 func reset_counter():
 	counter = 0
+
+
+func process_email_choice(is_phish_button_pressed: bool, current_email: Email):
+	# Determine if the user was actually correct based on the Email resource data
+	var user_was_correct = (is_phish_button_pressed == current_email.is_phishing)
+
+	if user_was_correct:
+		Global.add_receipt_entry(50, "Correctly Identified Email", false)
+	else:
+		Global.add_receipt_entry(-100, "Phishing Link Clicked: " + current_email.sender_name, true)
+		# Existing logic to track mistakes for the final review
+		add_incorrect_email(current_email)
+	
+	# After scoring, we trigger the counter check
+	finish_email_round()
 	
 #Functions for incorrect email Array
 
@@ -61,7 +76,16 @@ func reset_incorrect_email_Array():
 func add_incorrect_email(Email):
 	incorrect_emails.append(Email)
 	print(incorrect_emails)
+
+
+func finish_email_round():
+	counter -= 1
+	print("Emails remaining: ", counter)
 	
-	
+	if counter <= 0:
+		print("Emails done! Moving to Social Scenarios...")
+		get_tree().change_scene_to_file("res://Scenes/UI/lunchbre/lunchbreak.tscn")
+	else:
+		pass
 	
 	

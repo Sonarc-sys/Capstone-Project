@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 EmailManager="*uid://dqgjwsmredhkk"
 Global="*uid://dw4skefs7kqup"
-ScoreManager="*uid://ckixndo5ixepc"
+scoreManager="*uid://ckixndo5ixepc"
 
 [dotnet]
 

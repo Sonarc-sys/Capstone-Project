@@ -85,8 +85,8 @@ text = "No"
 [node name="ConsequencePanel" type="Panel" parent="." unique_id=113705593]
 layout_mode = 0
 offset_left = 474.0
-offset_top = 184.0
-offset_right = 514.0
+offset_top = 179.0
+offset_right = 607.0
 offset_bottom = 224.0
 
 [node name="ResultLabel" type="Label" parent="ConsequencePanel" unique_id=1878922963]
@@ -94,7 +94,7 @@ layout_mode = 0
 offset_left = -1.0
 offset_top = -1.0
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 22.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_option_pressed"]

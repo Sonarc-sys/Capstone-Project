@@ -67,11 +67,14 @@ func show_consequence(right: bool):
 	if res_label:
 		res_label.text = result_text + current_scen.consequence_Text
 	
-	# Wait exactly 2 seconds
+	# Wait for the player to read the result of the 5th scenario
 	await get_tree().create_timer(2.0).timeout
 	
+	# Check if we finished the 5th round
 	if rounds_count >= 5:
-		get_tree().change_scene_to_file("res://Scenes/UI/Scoreboard.tscn")
+		print("Game Over! Switching to Scoreboard...")
+		# DOUBLE CHECK: Ensure this path matches your FileSystem exactly!
+		get_tree().change_scene_to_file("res://Scenes/Scoreboard.tscn")
 	else:
 		get_next_scenario()
 # Signals from Inspector

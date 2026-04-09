@@ -39,9 +39,9 @@ func _on_trash_pressed() -> void:
 		
 	#Scoring Logic
 	if focused_email.safe_email == false:
-		ScoreManager.add_score(ScoreManager.currentScoreIncrement)
+		scoreManager.add_score(scoreManager.currentScoreIncrement)
 	else:
-		ScoreManager.minus_score(ScoreManager.currentScoreIncrement)
+		scoreManager.minus_score(scoreManager.currentScoreIncrement)
 		EmailManager.add_incorrect_email(focused_email)
 	
 	
@@ -81,9 +81,9 @@ func _on_forward_pressed() -> void:
 	#Scoring Logic
 		#Scoring Logic
 	if focused_email.safe_email == true:
-		ScoreManager.add_score(ScoreManager.currentScoreIncrement)
+		scoreManager.add_score(scoreManager.currentScoreIncrement)
 	else:
-		ScoreManager.minus_score(ScoreManager.currentScoreIncrement)
+		scoreManager.minus_score(scoreManager.currentScoreIncrement)
 		EmailManager.add_incorrect_email(focused_email)
 
 		

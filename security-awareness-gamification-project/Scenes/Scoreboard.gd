@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 @onready var mistake_list = $ScrollContainer/VBoxContainer
 @onready var total_label = $TotalLabel
 @onready var statuslabel = $StatusLabel
@@ -7,7 +7,38 @@ func _ready():
 	display_results()
 	
 func display_results():
+	print("--- DISPLAY RESULTS STARTED ---")
 	var total = 0
+	
+	# 1. Check if the array is actually reaching the Scoreboard
+	print("Items in Global.receipt_data: ", Global.receipt_data.size())
+	
+	# 2. First, clear the list entirely
+	for child in mistake_list.get_children():
+		child.queue_free()
+		
+	# 3. Check if it's empty
+	if Global.receipt_data.size() == 0:
+		print("ALERT: No data found in Global.receipt_data!")
+		var empty_mssg = Label.new()
+		empty_mssg.text = "Sorry, no new data has been recorded for today."
+		mistake_list.add_child(empty_mssg)
+		return
+		
+	# 4. Loop through the data
+	for entry in Global.receipt_data:
+		print("Drawing entry: ", entry["text"]) # Check if this prints
+		var item_row = Button.new()
+		item_row.text = entry["text"] + " | $" + str(entry["cash"])
+		# ... (rest of your button logic)
+		mistake_list.add_child(item_row)
+		total += entry["cash"]
+			
+	# 5. Final update
+	total_label.text = "Final Score: $" + str(total)
+	print("Final Label Set to: ", total_label.text)
+	
+	
 	
 	# 1. First, clear the list entirely
 	for child in mistake_list.get_children():
@@ -49,7 +80,7 @@ func display_results():
 		
 func _on_retry_button_pressed():
 	Global.reset_day() # Clear the mistakes from Global
-	get_tree().change_scene_to_file("res://Scenes/UI/lunchbreak.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/lunchbre/lunchbreak.tscn")
 
 func _on_row_clicked(explanation: String):
 	# This prints the specific mistake text to the console when you click a red row
