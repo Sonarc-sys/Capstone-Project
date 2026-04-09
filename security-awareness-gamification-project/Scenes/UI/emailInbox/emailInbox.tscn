@@ -122,12 +122,14 @@ layout_mode = 2
 
 [node name="Sender Info" type="Label" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Email Container/From_sender_logo/Vbox SenderInfo" unique_id=400013740]
 layout_mode = 2
+autowrap_mode = 2
 
 [node name="Logo" type="TextureRect" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Email Container/From_sender_logo" unique_id=663433869]
 layout_mode = 2
 
 [node name="Subject Label" type="Label" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Email Container" unique_id=1436509098]
 layout_mode = 2
+autowrap_mode = 2
 
 [node name="Attachments" type="HBoxContainer" parent="Hbox for EmaiList_Email Body/Vbox Right side Email/Email Content Panel/Vbox Email Container" unique_id=233197583]
 layout_mode = 2
