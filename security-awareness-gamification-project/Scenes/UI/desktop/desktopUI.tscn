@@ -1,6 +1,23 @@
 [gd_scene format=3 uid="uid://b6hcoydjk3csb"]
 
 [ext_resource type="Script" uid="uid://bjgerjucbbjmj" path="res://Scenes/UI/desktop/desktop_ui.gd" id="1_ku2ud"]
+<<<<<<< HEAD
+=======
+
+[sub_resource type="GDScript" id="GDScript_ku2ud"]
+script/source = "extends \"res://Scenes/UI/desktop/desktop_ui.gd\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+"
+>>>>>>> e974fe08b720ed113bef927ae2002d7e7f5fc022
 
 [node name="DesktopUi" type="Control" unique_id=1870337724]
 layout_mode = 3
@@ -13,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ku2ud")
 
-[node name="Button" type="Button" parent="." unique_id=765039288]
+[node name="Email" type="Button" parent="." unique_id=765039288]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 578.0
@@ -30,5 +47,5 @@ offset_right = 338.0
 offset_bottom = 641.0
 text = "📌 Tips"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Email" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TipsButton" to="." method="_on_tips_button_pressed"]
