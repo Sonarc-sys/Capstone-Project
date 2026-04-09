@@ -64,7 +64,7 @@ func _on_trash_pressed() -> void:
 	#Check to Scene Change to Lunchbreak
 	EmailManager.update_counter()
 	if EmailManager.counter == 5:
-		get_tree().change_scene_to_file("res://Scenes/UI/mainMenu/main_menu.tscn")
+		get_tree().change_scene_to_file("res://Scenes/UI/lunchbreak/lunchbreak.tscn")
 	print("The current email array size is: ", EmailManager.counter)
 	
 		
@@ -107,7 +107,7 @@ func _on_forward_pressed() -> void:
 	#Check to Scene Change to Lunchbreak
 	EmailManager.update_counter()
 	if EmailManager.counter == 5:
-		get_tree().change_scene_to_file("res://Scenes/UI/mainMenu/main_menu.tscn")
+		get_tree().change_scene_to_file("res://Scenes/UI/lunchbreak/lunchbreak.tscn")
 	print("The current email array size is: ", EmailManager.counter)
 	
 	
