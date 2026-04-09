@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Email" format=3 uid="uid://5qx7maugf60k"]
+
+[ext_resource type="Script" uid="uid://bucunhkknltf4" path="res://Scripts/Data/emailDatabase/Logic/Attachment.gd" id="1_0dttu"]
+[ext_resource type="Script" uid="uid://b2i330dxjcox4" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="2_2qkip"]
+
+[resource]
+script = ExtResource("2_2qkip")
+subject = "Password Update Needed"
+sender = "@cyber-safe.it.com"
+body_text = "Hey, we are asking all employees to please update their passwords before Friday end of day. Thank you!"
+metadata/_custom_type_script = "uid://b2i330dxjcox4"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Email" format=3 uid="uid://crsfmmwpybacf"]
+
+[ext_resource type="Script" uid="uid://bucunhkknltf4" path="res://Scripts/Data/emailDatabase/Logic/Attachment.gd" id="1_8rxh2"]
+[ext_resource type="Script" uid="uid://b2i330dxjcox4" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="2_74hbh"]
+
+[resource]
+script = ExtResource("2_74hbh")
+subject = "URGENT! ACTION NEEDED!"
+sender = "@scam-site.net"
+relevant_info = "@cyber-safe.com"
+body_text = "URGENT! Needs to be addressed and fixed now. Send your email, work info, and card number here."
+metadata/_custom_type_script = "uid://b2i330dxjcox4"

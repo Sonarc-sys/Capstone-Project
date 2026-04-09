@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Email" format=3 uid="uid://cobs8jxfl0wme"]
+
+[ext_resource type="Script" uid="uid://bucunhkknltf4" path="res://Scripts/Data/emailDatabase/Logic/Attachment.gd" id="1_0m4o4"]
+[ext_resource type="Script" uid="uid://b2i330dxjcox4" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="2_tte2k"]
+
+[resource]
+script = ExtResource("2_tte2k")
+subject = "Friday Quick Meeting"
+sender = "TheBoss@cyber-safe.com"
+body_text = "Hey all, just a reminder that we will be having our Friday end-of-day meeting before you clock out of work at 2.00 in Conference Room H. See you there, thanks."
+metadata/_custom_type_script = "uid://b2i330dxjcox4"
