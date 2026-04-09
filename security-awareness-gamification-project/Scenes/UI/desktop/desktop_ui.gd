@@ -10,7 +10,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 	
 	# Tooltip addition: Create sticky note
-	var sticky_scene = load("res://Scenes/UI/desktop/sticky_tooltip_panel.tscn")
+	var sticky_scene = load("res://Scripts/UI/toolTips/sticky_tooltip_panel.tscn")  # Added missing )
 	if sticky_scene:
 		sticky_tooltip = sticky_scene.instantiate()
 		add_child(sticky_tooltip)
