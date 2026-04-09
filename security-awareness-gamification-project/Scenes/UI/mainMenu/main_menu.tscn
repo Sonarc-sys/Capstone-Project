@@ -103,6 +103,7 @@ text = "Retire
 "
 
 [connection signal="pressed" from="VBoxContainer/NewHire_Button" to="." method="_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Continue_Button" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Continue_Button" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options_Button" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Retire_Button" to="." method="_on_exit_pressed"]

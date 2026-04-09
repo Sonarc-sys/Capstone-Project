@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3 uid="uid://ccd1r3ya0cuvd"]
+
+[ext_resource type="Script" uid="uid://bmtupw6t7k5gr" path="res://LunchBreakScenario.gd" id="1_n4431"]
+[ext_resource type="Texture2D" uid="uid://dbuhrqfyoqlsf" path="res://Scenes/UI/lunchbreak/images.jpg" id="1_x4ej3"]
+
+[resource]
+script = ExtResource("1_n4431")
+scenario_text = "A friend asks to use your company discount card to get a discount on their food"
+scenario_image = ExtResource("1_x4ej3")
+thechoices = Array[String](["Give your discount card.", "Decline, and remind them of company policy."])
+correct_choiceindex = 1
+metadata/_custom_type_script = "uid://bmtupw6t7k5gr"
