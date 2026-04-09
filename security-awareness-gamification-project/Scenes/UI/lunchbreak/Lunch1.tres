@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://cy63nyvs0camv"]
+
+[ext_resource type="Script" uid="uid://bmtupw6t7k5gr" path="res://LunchBreakScenario.gd" id="1_cckto"]
+
+[resource]
+script = ExtResource("1_cckto")
+thechoices = Array[String](["", "", "", "", ""])
+metadata/_custom_type_script = "uid://bmtupw6t7k5gr"

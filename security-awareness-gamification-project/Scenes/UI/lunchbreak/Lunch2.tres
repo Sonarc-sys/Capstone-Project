@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3 uid="uid://h47ln0nc6rqj"]
+
+[ext_resource type="Texture2D" uid="uid://5f6b6njjoo16" path="res://images.jpg" id="1_g0wmc"]
+[ext_resource type="Script" uid="uid://bmtupw6t7k5gr" path="res://LunchBreakScenario.gd" id="1_l85rc"]
+
+[resource]
+script = ExtResource("1_l85rc")
+scenario_text = "A friend wants to borrow your badge to get back inside the company and asks to borrow your ID card."
+scenario_image = ExtResource("1_g0wmc")
+thechoices = Array[String](["Lend your ID", "Refuse"])
+correct_choiceindex = 1
+metadata/_custom_type_script = "uid://bmtupw6t7k5gr"

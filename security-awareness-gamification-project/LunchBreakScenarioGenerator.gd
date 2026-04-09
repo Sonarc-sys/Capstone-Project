@@ -1,12 +1,11 @@
-extends Node
-class_name LunchBreakScenarioGenerator
+extends Resource
+class_name ScenarioGenerator
 
-@export var all_Scenarios: Array[LunchBreakScenario] = []
+@export var days_array: Array[Resource] = []
 
-#Returns a random lunch break scenario [cite: 83, 103]
-func get_rand_lunchbreak() -> LunchBreakScenario:
-	if all_Scenarios.size() > 0:
-		all_Scenarios.shuffle()
-		return all_Scenarios[0]
+func get_rand_lunchbreak():
+	if days_array.size() > 0:
+		# randi() % size picks a random index from the array
+		var random_index = randi() % days_array.size()
+		return days_array[random_index]
 	return null
-	
