@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Email" format=3 uid="uid://c4r88w0boefgn"]
+
+[ext_resource type="Script" uid="uid://bucunhkknltf4" path="res://Scripts/Data/emailDatabase/Logic/Attachment.gd" id="1_6cfbs"]
+[ext_resource type="Script" uid="uid://b2i330dxjcox4" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="2_a4uxg"]
+
+[resource]
+script = ExtResource("2_a4uxg")
+subject = "2026 Open Enrollment Benefits Update"
+sender = "hr@cybersafe.com"
+fullname = "Sarah Martinez"
+full_email_address = "sarah.martinez@cybersafe-hr.com"
+receiver = "employee@cybersafe.com"
+relevant_info = "Annual benefits open enrollment period from Nov 1-15"
+body_text = "Dear Team, This is a reminder that our annual Open Enrollment period for 2025 benefits will run from November 1st through November 15th. Please review the attached Benefits Guide for detailed information about health insurance plan options, dental and vision coverage, Flexible Spending Account (FSA) updates, and 401(k) contribution limits. To make your selections, please log into the HR Portal at https://hr.cybersafe.com/enrollment before November 15th. If you have any questions, please contact the HR department at hr@cybersafe.com or call extension 555-0123. Best regards, Sarah Martinez HR Benefits Coordinator Cybersafe Corporation"
+metadata/_custom_type_script = "uid://b2i330dxjcox4"

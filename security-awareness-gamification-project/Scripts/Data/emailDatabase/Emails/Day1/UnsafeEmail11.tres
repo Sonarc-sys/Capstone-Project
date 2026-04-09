@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Email" format=3 uid="uid://c37i3gwqgxmq6"]
+
+[ext_resource type="Script" uid="uid://bucunhkknltf4" path="res://Scripts/Data/emailDatabase/Logic/Attachment.gd" id="1_fv8e0"]
+[ext_resource type="Script" uid="uid://b2i330dxjcox4" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="2_ofpad"]
+
+[resource]
+script = ExtResource("2_ofpad")
+safe_email = false
+subject = "URGENT: Need Access to Your Account for Important File"
+sender = "admin@secure-file-transfer.net"
+fullname = "James Wilson"
+full_email_address = "james.wilson@cybersafe-exec.com"
+receiver = "employee@cybersafe.com"
+relevant_info = "Claims to be executive needing immediate file access"
+body_text = "Hello, I am currently traveling and need to access an urgent file that is saved on your work computer. Please reply to this email with your login credentials so I can log in remotely and retrieve the file. This is extremely time sensitive and requires your immediate attention. The client is waiting for this document and I cannot access it from my current location. Please send your username and password as soon as possible. Thank you for your cooperation. James Wilson Executive Director"
+metadata/_custom_type_script = "uid://b2i330dxjcox4"

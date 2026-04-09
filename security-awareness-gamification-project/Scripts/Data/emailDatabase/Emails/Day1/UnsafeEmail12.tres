@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Email" format=3 uid="uid://my8uufkucbre"]
+
+[ext_resource type="Script" uid="uid://bucunhkknltf4" path="res://Scripts/Data/emailDatabase/Logic/Attachment.gd" id="1_kymll"]
+[ext_resource type="Script" uid="uid://b2i330dxjcox4" path="res://Scripts/Data/emailDatabase/Logic/email.gd" id="2_en5we"]
+
+[resource]
+script = ExtResource("2_en5we")
+safe_email = false
+subject = "Your Account Will Be Suspened Immediately - Varify Now"
+sender = "support@verify-account-security.net"
+fullname = "Micheal Roberts"
+full_email_address = "michael.roberts@security-alerts-center.com"
+receiver = "employee@cybersafe.com"
+body_text = "ALERT: We have detected suspisous login attempts on you're account from an unrecognized device. For you're security, you're account will be suspened within 24 hours if you do not varify you're identity immediately. Click the link bellow to confirm you're account details and prevent suspention. verification-link.secure-login.net/verify After varification, please open the attached document and follow the instrucions to complete security setup. Failure to varify will result in permament account lockout. This is an automatted security message. Do not reply to this email. Security Team"
+metadata/_custom_type_script = "uid://b2i330dxjcox4"
